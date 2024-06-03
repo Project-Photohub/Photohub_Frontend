@@ -2,9 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --text-black: #000000;
+    --text-white: #EEEEEE;
+
+    --header-default: #323232;
+    --header-hover: #383838;
+
+    --background-default: #2C2C2C;
+    --background-hover: #303030;
+    --background-highlight: #3A3A3A;
+}
+
 * {
     margin: 0;
     padding: 0;
+    border: 0;
+}
+
+html {
+    background-color: var(--background-default);
 }
 
 body {
@@ -21,6 +38,7 @@ p {
     text-overflow: inherit;
     word-break: break-all;
     overflow: inherit;
+    color: var(--text-white);
 }
 
 code {
