@@ -1,12 +1,14 @@
 export interface ButtonProps {
     readonly type: "submit" | "reset" | "button",
     readonly onClick?: () => void,
-    readonly inner?: string,
+    readonly inner?: JSX.Element,
     readonly className?: string,
 }
 
 export const Button = (props: ButtonProps) => {
     return (
-        <button className={props.className} type={props.type} onClick={props.onClick}>{props.inner}</button>
+        <button className={props.className} type={props.type} onClick={props.onClick}>
+            {props.inner}
+        </button>
     )
 }
