@@ -28,6 +28,17 @@ module.exports = {
                 "default": "rgba(51,51,51,0.5)",
                 "invisible": "rgba(255,255,255,0)",
             }
+        },
+        fontFamily: {
+            'pretendard': ['Pretendard'],
+            'p-extra-light': ['Pretendard ExtraLight'],
+            'p-light': ['Pretendard Light'],
+            'p-thin': ['Pretendard Thin'],
+            'p-medium': ['Pretendard Medium'],
+            'p-regular': ['Pretendard'],
+            'p-semi-bold': ['Pretendard SemiBold'],
+            'p-extra-bold': ['Pretendard ExtraBold'],
+            'p-black': ['Pretendard Black']
         }
     },
     plugins: [],

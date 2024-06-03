@@ -15,7 +15,7 @@ export const SearchType = (props: SearchTypeProps) => {
                 location.href = `/${props.name.toLowerCase()}.html`
             }}>
             <SearchTypeSelectMark isInvisible={true}/>
-            <p>{props.name}</p>
+            <p className={"font-p-semi-bold text-text-white text-[24px]"}>{props.name}</p>
             <SearchTypeSelectMark isInvisible={true}/>
         </div>
     )

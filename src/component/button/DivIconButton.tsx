@@ -16,7 +16,7 @@ export interface DivIconButtonProps {
 export const DivIconButton = (props: DivIconButtonProps) => {
     return (
         <div
-            className={`${props.className} flex gap-2.5 items-center justify-center`}
+            className={`${props.className} flex gap-[10px] items-center`}
             onClick={props.onClick}
         >
             <img className={`w-[${props.iconProps.iconWidth}] h-[${props.iconProps.iconHeight}]`}
@@ -25,7 +25,7 @@ export const DivIconButton = (props: DivIconButtonProps) => {
                  src={props.iconProps.iconUri}
                  alt="icon"
             />
-            <p className={`w-fit h-fit size-[${props.textSize}]`}>{props.text}</p>
+            <p className={`text-[${props.textSize}]`}>{props.text}</p>
         </div>
     )
 }
