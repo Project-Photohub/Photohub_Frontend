@@ -4,12 +4,10 @@ import {useEffect} from "react";
 export const SearchTypes = () => {
 
     useEffect(() => {
-
         // eslint-disable-next-line no-restricted-globals
         const paths = location.href.split('/')
-        const endPoint = paths[paths.length - 1]
         const currentSelected = document.getElementById(
-            `search-type-${endPoint.substring(0, endPoint.length - 5)}`
+            `search-type-${paths[paths.length - 1]}`
         );
 
         if (currentSelected === undefined || currentSelected === null) {
