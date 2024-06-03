@@ -6,7 +6,9 @@ module.exports = {
         colors: {
             "text": {
                 "black": "#000000",
-                "white": "#EEEEEE"
+                "white": "#EEEEEE",
+                "subtext2": "#A1A1A1",
+                "subtext3": "#898989"
             },
             "header": {
                 "default": "#323232",
