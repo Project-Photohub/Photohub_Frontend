@@ -9,6 +9,7 @@ export interface DivIconButtonProps {
     readonly gap: string,
     readonly onClick?: () => void,
     readonly text?: string,
+    readonly textSize?: string,
     readonly className?: string,
 }
 
@@ -24,7 +25,7 @@ export const DivIconButton = (props: DivIconButtonProps) => {
                  src={props.iconProps.iconUri}
                  alt="icon"
             />
-            <p className={`w-fit h-fit`}>{props.text}</p>
+            <p className={`w-fit h-fit size-[${props.textSize}]`}>{props.text}</p>
         </div>
     )
 }

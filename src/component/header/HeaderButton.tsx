@@ -16,6 +16,7 @@ export const HeaderButton = (props: HeaderButtonProps) => {
         gap={"10px"}
         onClick={props.onClick}
         text={props.text}
+        textSize={"16px"}
         className={"rounded-[10px] h-[50px] p-[10px] hover:bg-header-hover"}
     />)
 }
