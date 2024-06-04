@@ -2,9 +2,11 @@ import React from 'react';
 import {Header} from "./component/header/Header";
 import {RecommendAdd} from "./component/body/RecommendAdd";
 import {Group} from "./component/body/group/Group";
+import {CurrentPageInitializer} from "./info/CurrentPage";
 
 export const App = () => {
     return (<div className={"flex flex-col gap-[50px]"}>
+        <CurrentPageInitializer/>
         <Header/>
         <Group
             groups={[
