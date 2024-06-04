@@ -1,11 +1,10 @@
 import {GroupSelection} from "./GroupSelection";
 import {MemberSelection} from "./MemberSelection";
+import {CurrentPage} from "../../../info/CurrentPage";
 
 export interface GroupProps {
     groups: GroupInfo[],
-    currentGroupId: number,
     currentGroupMembers: MemberInfo[]
-    currentMemberId: number,
 }
 
 export interface GroupInfo {
@@ -21,20 +20,29 @@ export interface MemberInfo {
 }
 
 export const Group = (props: GroupProps) => {
+
+    // eslint-disable-next-line no-restricted-globals
+    const paths = location.href.split('/')
+    const pathLength = paths.length
+
+    if (CurrentPage.getCurrentPage() !== 'group') {
+        return <></>
+    }
+
+    const selectedGroup = Number(paths[pathLength - 2])
+
+    const selectedMember = Number(paths[pathLength - 1])
+
     const groups: JSX.Element[] = []
     props.groups.forEach((it) => {
-        groups.push(
-            <GroupSelection id={it.id} name={it.name} logo={it.logo}
-                            isSelected={props.currentGroupId === it.id}/>
-        )
+        groups.push(<GroupSelection id={it.id} name={it.name} logo={it.logo}
+                            isSelected={selectedGroup === it.id}/>)
     })
 
     const members: JSX.Element[] = []
     props.currentGroupMembers.forEach((it) => {
         members.push(<MemberSelection id={it.id} name={it.name} nickname={it.nickname}
-                                      isSelected={props.currentMemberId === it.id}/>)
-        console.log(props.currentMemberId)
-        console.log(it.name)
+                                      isSelected={selectedMember === it.id}/>)
     })
 
 

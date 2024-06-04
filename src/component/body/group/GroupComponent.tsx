@@ -2,17 +2,6 @@ import {Group} from "./Group";
 import React from "react";
 
 export const GroupComponent = () => {
-    // eslint-disable-next-line no-restricted-globals
-    const paths = location.href.split('/')
-
-    if (paths[paths.length - 3] !== ('group')) {
-        return <></>
-    }
-
-    const selectedGroup = Number(paths[paths.length - 2])
-
-    const selectedMember = Number(paths[paths.length - 1])
-
     return <Group
         groups={[
             {
@@ -26,7 +15,6 @@ export const GroupComponent = () => {
                 name: "LE SSERAFIM"
             }
         ]}
-        currentGroupId={selectedGroup}
         currentGroupMembers={[
             {
                 id: 1,
@@ -48,6 +36,5 @@ export const GroupComponent = () => {
                 nickname: "R",
                 name: "이시연"
             }
-        ]}
-        currentMemberId={selectedMember}/>
+        ]}/>
 }
