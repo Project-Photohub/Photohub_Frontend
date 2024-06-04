@@ -40,7 +40,9 @@ module.exports = {
             'p-regular': ['Pretendard'],
             'p-semi-bold': ['Pretendard SemiBold'],
             'p-extra-bold': ['Pretendard ExtraBold'],
-            'p-black': ['Pretendard Black']
+            'p-black': ['Pretendard Black'],
+
+            'preahvihear': ['Preahvihear', 'Pretendard']
         }
     },
     plugins: [],
