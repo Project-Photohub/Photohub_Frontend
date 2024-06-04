@@ -19,6 +19,6 @@ export const GroupSelection = (props: GroupSelectionProps) => {
             location.href = location.href.substring(0, location.href.length - currentGroupAndMemberIdSize) + props.id.toString() + "/1"
         }}>
         <img className={"h-[50px] w-[50px]"} src={props.logo} alt={props.name} height={"50px"} width={"50px"}/>
-        <p className={"font-p-regular text-text-white text-[32px]"}>{props.name}</p>
+        <p className={"font-preahvihear text-text-white text-[32px]"}>{props.name}</p>
     </div>
 };
