@@ -18,7 +18,9 @@
     margin: 0;
     padding: 0;
     border: 0;
+}
 
+.animated {
     transition: all 0.5s;
 }
 
