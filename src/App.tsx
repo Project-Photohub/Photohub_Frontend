@@ -1,7 +1,7 @@
 import React from 'react';
 import {Header} from "./component/header/Header";
 import {RecommendAdd} from "./component/body/RecommendAdd";
-import {Group} from "./component/body/group/Group";
+import {GroupComponent} from "./component/body/group/GroupComponent";
 import {CurrentPageInitializer} from "./info/CurrentPage";
 
 export const App = () => {
