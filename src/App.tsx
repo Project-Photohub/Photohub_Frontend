@@ -1,14 +1,19 @@
 import React from 'react';
-import {Header} from "./component/header/Header";
-import {RecommendAdd} from "./component/body/RecommendAdd";
-import {GroupComponent} from "./component/body/group/GroupComponent";
 import {CurrentPageInitializer} from "./info/CurrentPage";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {DefaultPageController} from "./info/DefaultPageController";
+import {GroupSearchPage} from "./pages/GroupSearchPage";
+import {DefaultSearchPage} from "./pages/DefaultSearchPage";
 
 export const App = () => {
-    return (<div className={"flex flex-col gap-[50px]"}>
-        <CurrentPageInitializer/>
-        <Header/>
-        <GroupComponent/>
-        <RecommendAdd/>
-    </div>);
+    return (
+        <BrowserRouter>
+            <CurrentPageInitializer/>
+            <DefaultPageController/>
+            <Routes>
+                <Route path={"/search/group/*"} element={<GroupSearchPage/>}/>
+                <Route path={"/search/*"} element={<DefaultSearchPage/>}/>
+            </Routes>
+        </BrowserRouter>
+    );
 }
