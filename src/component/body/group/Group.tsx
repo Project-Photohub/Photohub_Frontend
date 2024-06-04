@@ -45,7 +45,6 @@ export const Group = (props: GroupProps) => {
                                       isSelected={selectedMember === it.id}/>)
     })
 
-
     return <div key={"group"} className={"flex flex-col gap-[20px] pl-[100px] pe-[100px]"}>
         <div key={"groups"} className={"flex gap-[10px]"}>
             {groups}
