@@ -1,7 +1,7 @@
 import {CurrentPage} from "./CurrentPage";
 
 export const DefaultPageController = () => {
-    if (CurrentPage.getCurrentPage() === "home") {
+    if (CurrentPage.getCurrentPage() === "other") {
         // eslint-disable-next-line no-restricted-globals
         location.href = "/search/popular"
     } else if (CurrentPage.getCurrentPage() === "group") {

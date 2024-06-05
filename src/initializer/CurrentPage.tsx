@@ -5,7 +5,7 @@ export class CurrentPage {
 
     private static currentPage: string
 
-    private static pageNames = ["home", "popular", "latest", "group", "my", "random", "login", "signup"]
+    private static pageNames = ["popular", "latest", "group", "my", "random", "login", "signup", "other"]
 
     static isPageName(string: string): boolean {
         return this.pageNames.includes(string)
@@ -35,7 +35,7 @@ export const CurrentPageInitializer = () => {
         }
     })
 
-    CurrentPage.initialCurrentPage("home")
+    CurrentPage.initialCurrentPage("other")
 
     return <></>
 }
