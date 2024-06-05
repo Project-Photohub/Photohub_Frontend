@@ -1,6 +1,6 @@
 import {SearchType} from "./SearchType";
 import {useEffect} from "react";
-import {CurrentPage} from "../../../info/CurrentPage";
+import {CurrentPage} from "../../../initializer/CurrentPage";
 
 export const SearchTypes = () => {
 

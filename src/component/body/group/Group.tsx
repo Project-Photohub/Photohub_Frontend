@@ -1,6 +1,6 @@
 import {GroupSelection} from "./GroupSelection";
 import {MemberSelection} from "./MemberSelection";
-import {CurrentPage} from "../../../info/CurrentPage";
+import {CurrentPage} from "../../../initializer/CurrentPage";
 
 export interface GroupProps {
     groups: GroupInfo[],
