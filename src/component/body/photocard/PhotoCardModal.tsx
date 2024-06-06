@@ -11,13 +11,15 @@ export const PhotoCardModal = (
              onClick={(event) => {
                  setIsModalOpened(false)
              }}>
-            <div
-                className={"flex flex-col gap-[30px] items-center rounded-[30px] bg-background-highlight w-[1000px] pt-[20px] pb-[20px] pl-[50px] pe-[50px] m-auto"}
-                onClick={(event) => {
-                    event.stopPropagation()
-                }}>
-                {PhotoCardModalInfo(props)}
-                {PhotoCardModalImages(props)}
+            <div className={"flex w-full h-full justify-center items-center"}>
+                <div
+                    className={"flex flex-col gap-[30px] items-center rounded-[30px] bg-background-highlight w-[1000px] pt-[20px] pb-[20px] pl-[50px] pe-[50px]"}
+                    onClick={(event) => {
+                        event.stopPropagation()
+                    }}>
+                    {PhotoCardModalInfo(props)}
+                    {PhotoCardModalImages(props)}
+                </div>
             </div>
         </div>
     )
@@ -40,8 +42,8 @@ const PhotoCardModalInfo = (props: PhotoCardProps) => {
 const PhotoCardModalImages = (props: PhotoCardProps) => {
     return (
         <div className={`flex gap-[30px]`}>
-            <PhotoCardImage image={props.image} width={"330px"} height={"510px"}/>
-            <PhotoCardImage image={props.backImage} width={"330px"} height={"510px"}/>
+            <PhotoCardImage image={props.image} width={"275px"} height={"425px"}/>
+            <PhotoCardImage image={props.backImage} width={"275px"} height={"425px"}/>
         </div>
     )
 }
