@@ -1,21 +1,16 @@
 import React from 'react';
-import {CurrentPageInitializer} from "./initializer/CurrentPage";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {DefaultPageController} from "./initializer/DefaultPageController";
-import {GroupSearchPage} from "./pages/GroupSearchPage";
-import {DefaultSearchPage} from "./pages/DefaultSearchPage";
-import {TailwindUtilitesLoader} from "./initializer/TailwindUtilitesLoader";
+import {BrowserRouter} from "react-router-dom";
+import {Initializers} from "./initializer/Initializers";
+import {DispatcherRouter} from "./pages/DispatcherRouter";
 
 export const App = () => {
     return (
         <BrowserRouter>
-            <CurrentPageInitializer/>
-            <DefaultPageController/>
-            <TailwindUtilitesLoader/>
-            <Routes>
-                <Route path={"/search/group/*"} element={<GroupSearchPage/>}/>
-                <Route path={"/search/*"} element={<DefaultSearchPage/>}/>
-            </Routes>
+
+            {Initializers()}
+
+            <DispatcherRouter/>
+
         </BrowserRouter>
     );
 }
