@@ -16,16 +16,16 @@ export interface PhotoCardProps {
 
 export const PhotoCard = (props: PhotoCardProps) => {
 
-    const [isModelOpened, openModal] = useState(false)
+    const [isModalOpened, setIsModalOpened] = useState<boolean>(false)
 
     return (
         <div className={`flex `}>
             <div onClick={() => {
-                openModal(true)
+                setIsModalOpened(true)
             }}>
                 <PhotoCardImage width={"220px"} height={"340px"} image={props.image}/>
             </div>
-            {isModelOpened && PhotoCardModal(props)}
+            {isModalOpened && PhotoCardModal(props, setIsModalOpened)}
         </div>
     )
 }
