@@ -1,7 +1,7 @@
 export enum PageName {
     POPULAR = "popular",
     LATEST = "latest",
-    GROUPS = "group",
+    GROUP = "group",
     MY = "my",
     RANDOM = "random",
     LOGIN = "login",
@@ -33,12 +33,16 @@ export class CurrentPage {
 
         CurrentPage.currentPage = currentPage
         this.isInitialized = true
+
+        console.log(`Initialized current page: ${currentPage}`)
     }
 }
 
 export const CurrentPageInitializer = () => {
     // eslint-disable-next-line no-restricted-globals
     const paths = location.href.split('/')
+
+    console.log(paths)
 
     paths.forEach((it) => {
         if (CurrentPage.isPageName(it)) {

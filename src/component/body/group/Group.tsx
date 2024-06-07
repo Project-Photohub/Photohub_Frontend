@@ -35,21 +35,21 @@ export const Group = (props: GroupProps) => {
 
     const groups: JSX.Element[] = []
     props.groups.forEach((it) => {
-        groups.push(<GroupSelection id={it.id} name={it.name} logo={it.logo}
-                            isSelected={selectedGroup === it.id}/>)
+        groups.push(<GroupSelection key={it.name + it.id} id={it.id} name={it.name} logo={it.logo}
+                                    isSelected={selectedGroup === it.id}/>)
     })
 
     const members: JSX.Element[] = []
     props.currentGroupMembers.forEach((it) => {
-        members.push(<MemberSelection id={it.id} name={it.name} nickname={it.nickname}
+        members.push(<MemberSelection key={it.name + it.id} id={it.id} name={it.name} nickname={it.nickname}
                                       isSelected={selectedMember === it.id}/>)
     })
 
-    return <div key={"group"} className={"flex flex-col gap-[20px] pl-[100px] pe-[100px]"}>
-        <div key={"groups"} className={"flex gap-[10px]"}>
+    return <div className={"flex flex-col gap-[20px] pl-[100px] pe-[100px]"}>
+        <div className={"flex gap-[10px]"}>
             {groups}
         </div>
-        <div key={"members"} className={"flex gap-[10px] pl-[50px] pe-[50px]"}>
+        <div className={"flex gap-[10px] pl-[50px] pe-[50px]"}>
             {members}
         </div>
     </div>
