@@ -3,6 +3,7 @@ import {useState} from "react";
 import {PhotoCardImage} from "./PhotoCardImage";
 
 export interface PhotoCardProps {
+    id: number,
     image: string,
     backImage: string,
     name: string,
@@ -19,7 +20,7 @@ export const PhotoCard = (props: PhotoCardProps) => {
     const [isModalOpened, setIsModalOpened] = useState<boolean>(false)
 
     return (
-        <div className={`flex `}>
+        <div key={"photo-card" + props.id} className={`flex `}>
             <div onClick={() => {
                 setIsModalOpened(true)
             }}>
