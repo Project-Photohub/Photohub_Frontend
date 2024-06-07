@@ -1,26 +1,38 @@
+export enum PageName {
+    POPULAR = "popular",
+    LATEST = "latest",
+    GROUPS = "group",
+    MY = "my",
+    RANDOM = "random",
+    LOGIN = "login",
+    SIGNUP = "signup",
+    OTHER = "other"
+}
+
 export class CurrentPage {
 
     private constructor() {
     }
 
-    private static currentPage: string
+    private static currentPage: PageName
 
-    private static pageNames = ["popular", "latest", "group", "my", "random", "login", "signup", "other"]
-
-    static isPageName(string: string): boolean {
-        return this.pageNames.includes(string)
-    }
+    private static isInitialized: boolean = false;
 
     static getCurrentPage(): string {
         return this.currentPage
     }
 
-    static initialCurrentPage(currentPage: string) {
-        if (CurrentPage.currentPage != null || !CurrentPage.isPageName(currentPage)) {
+    static isPageName(string: string): boolean {
+        return string.toUpperCase() in PageName
+    }
+
+    static initialCurrentPage(currentPage: PageName) {
+        if (this.isInitialized) {
             return
         }
 
         CurrentPage.currentPage = currentPage
+        this.isInitialized = true
     }
 }
 
@@ -30,12 +42,12 @@ export const CurrentPageInitializer = () => {
 
     paths.forEach((it) => {
         if (CurrentPage.isPageName(it)) {
-            CurrentPage.initialCurrentPage(it)
+            CurrentPage.initialCurrentPage(it as PageName)
             return <></>
         }
     })
 
-    CurrentPage.initialCurrentPage("other")
+    CurrentPage.initialCurrentPage(PageName.OTHER)
 
     return <></>
 }
