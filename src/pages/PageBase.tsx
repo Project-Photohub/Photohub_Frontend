@@ -1,4 +1,5 @@
 import {Header} from "../component/header/Header";
+import {Footer} from "../component/footer/Footer";
 
 export interface PageBaseProps {
     children: JSX.Element[]
@@ -11,6 +12,8 @@ export const PageBase = (props: PageBaseProps) => {
             <Header/>
 
             {props.children}
+
+            <Footer/>
         </div>
     )
 }
