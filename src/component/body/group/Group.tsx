@@ -34,15 +34,19 @@ export const Group = (props: GroupProps) => {
     const selectedMember = Number(paths[pathLength - 1])
 
     const groups: JSX.Element[] = []
-    props.groups.forEach((it) => {
-        groups.push(<GroupSelection key={it.name + it.id} id={it.id} name={it.name} logo={it.logo}
-                                    isSelected={selectedGroup === it.id}/>)
+    props.groups.forEach((value) => {
+        groups.push(
+            <GroupSelection
+                key={value.name + value.id} id={value.id} name={value.name} logo={value.logo}
+                isSelected={selectedGroup === value.id}/>)
     })
 
     const members: JSX.Element[] = []
-    props.currentGroupMembers.forEach((it) => {
-        members.push(<MemberSelection key={it.name + it.id} id={it.id} name={it.name} nickname={it.nickname}
-                                      isSelected={selectedMember === it.id}/>)
+    props.currentGroupMembers.forEach((value) => {
+        members.push(
+            <MemberSelection
+                key={value.name + value.id} id={value.id} name={value.name} nickname={value.nickname}
+                isSelected={selectedMember === value.id}/>)
     })
 
     return <div className={"flex flex-col gap-[20px] pl-[100px] pe-[100px]"}>

@@ -16,7 +16,7 @@ export const GroupSelection = (props: GroupSelectionProps) => {
             const currentGroupAndMemberIdSize = paths[paths.length - 1].length + paths[paths.length - 2].length + 1
 
             // eslint-disable-next-line no-restricted-globals
-            location.href = location.href.substring(0, location.href.length - currentGroupAndMemberIdSize) + props.id.toString() + "/1"
+            location.href = location.href.substring(0, location.href.length - currentGroupAndMemberIdSize) + props.id.toString()
         }}>
         <img className={"h-[50px] w-[50px]"} src={props.logo} alt={props.name} height={"50px"} width={"50px"}/>
         <p className={"font-preahvihear text-text-white text-[32px]"}>{props.name}</p>

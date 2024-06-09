@@ -1,8 +1,30 @@
-import {Group} from "./Group";
-import React from "react";
+import {Group, GroupProps} from "./Group";
+import {useEffect, useState} from "react";
+import {
+    GetCurrentSelectedGroupAndMemberInfo
+} from "../../../module/request/domain/group/GetCurrentSelectedGroupAndMemberInfo";
 
 export const GroupComponent = () => {
-    return <Group
+
+    const [group, setGroup] = useState<JSX.Element>()
+    let loadedGroupMemberProps: GroupProps | undefined = undefined
+
+    const getGroupMemberInfo = async () => {
+
+        if (loadedGroupMemberProps === undefined) {
+            loadedGroupMemberProps = await GetCurrentSelectedGroupAndMemberInfo()
+        }
+
+        setGroup(Group(loadedGroupMemberProps))
+    }
+
+    useEffect(() => {
+        getGroupMemberInfo()
+    }, [loadedGroupMemberProps])
+
+    return group!
+
+    /*<Group
         groups={[
             {
                 id: 1,
@@ -36,5 +58,5 @@ export const GroupComponent = () => {
                 nickname: "R",
                 name: "이시연"
             }
-        ]}/>
+        ]}/>*/
 }
