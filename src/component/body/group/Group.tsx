@@ -1,6 +1,7 @@
 import {GroupSelection} from "./GroupSelection";
 import {MemberSelection} from "./MemberSelection";
 import {CurrentPage} from "../../../initializer/CurrentPage";
+import {CurrentGroupMemberRepository} from "../../../module/repository/CurrentGroupMemberRepository";
 
 export interface GroupProps {
     groups: GroupInfo[],
@@ -39,6 +40,10 @@ export const Group = (props: GroupProps) => {
             <GroupSelection
                 key={value.name + value.id} id={value.id} name={value.name} logo={value.logo}
                 isSelected={selectedGroup === value.id}/>)
+
+        if (selectedGroup === value.id) {
+            CurrentGroupMemberRepository.group = value
+        }
     })
 
     const members: JSX.Element[] = []
@@ -47,6 +52,10 @@ export const Group = (props: GroupProps) => {
             <MemberSelection
                 key={value.name + value.id} id={value.id} name={value.name} nickname={value.nickname}
                 isSelected={selectedMember === value.id}/>)
+
+        if (selectedMember === value.id) {
+            CurrentGroupMemberRepository.member = value
+        }
     })
 
     return <div className={"flex flex-col gap-[20px] pl-[100px] pe-[100px]"}>

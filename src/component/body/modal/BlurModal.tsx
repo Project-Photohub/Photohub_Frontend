@@ -1,6 +1,6 @@
 export interface BlurModalProps {
     children: JSX.Element[],
-    setIsModalOpened: (value: (((prevState: boolean) => boolean) | boolean)) => void
+    setModel: (value: JSX.Element | undefined) => void
 }
 
 export const BlurModal = (
@@ -12,7 +12,7 @@ export const BlurModal = (
         <div
             className={"fixed top-0 bottom-0 left-0 w-screen h-screen bg-blur-default overflow-hidden"}
             onClick={() => {
-                props.setIsModalOpened(false)
+                props.setModel(undefined)
             }}>
 
             {/* Modal Wrapper, Align Modal */}

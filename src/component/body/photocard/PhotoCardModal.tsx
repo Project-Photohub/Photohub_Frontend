@@ -1,13 +1,14 @@
 import {PhotoCardImage} from "./PhotoCardImage";
 import {PhotoCardProps} from "./PhotoCard";
 import {BlurModal} from "../modal/BlurModal";
+import {CurrentGroupMemberRepository} from "../../../module/repository/CurrentGroupMemberRepository";
 
 export const PhotoCardModal = (
     props: PhotoCardProps,
-    setIsModalOpened: (value: (((prevState: boolean) => boolean) | boolean)) => void
+    setModel: (value: JSX.Element | undefined) => void
 ) => {
     return (
-        <BlurModal setIsModalOpened={setIsModalOpened}>
+        <BlurModal setModel={setModel}>
             {PhotoCardModalInfo(props)}
             {PhotoCardModalImages(props)}
         </BlurModal>
@@ -22,7 +23,7 @@ const PhotoCardModalInfo = (props: PhotoCardProps) => {
                 {`${props.groupName}, ${props.memberNickname} ${props.memberName}`}
             </p>
             <p className={"text-text-subtext3 font-p-light text-[20px]"}>
-                {`- ${props.writer} | ${props.createdAt}`}
+                {props.createdAt}
             </p>
         </div>
     )

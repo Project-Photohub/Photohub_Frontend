@@ -1,13 +1,13 @@
 import {RecommendAdd} from "../../component/body/RecommendAdd";
 import {GroupComponent} from "../../component/body/group/GroupComponent";
 import {PageBase} from "../PageBase";
-import {MockPhotoCards} from "../../component/body/photocard/MockPhotoCards";
+import {MemberPhotoCardComponent} from "../../component/body/photocard/MemberPhotoCardComponent";
 
 export const GroupSearchPage = () => {
     return (
         <PageBase>
             <GroupComponent/>
-            <MockPhotoCards/>
+            <MemberPhotoCardComponent/>
             <RecommendAdd/>
         </PageBase>
     )
