@@ -23,10 +23,11 @@ export const GetCurrentSelectedGroupAndMemberInfo = async () => {
 
         console.log(response)
 
+        // goto {hostname}/search/group/{groupId}/{memberId}
         // eslint-disable-next-line no-restricted-globals
         location.href += `/${groups.list[0].id}/${response.members[0].id}`
 
-    } else if (paths[paths.length - 2] === "group") { // {hostname}/search/group/{groupId}\
+    } else if (paths[paths.length - 2] === "group") { // {hostname}/search/group/{groupId}
         console.log("{hostname}/search/group/{groupId}")
 
         let response =
@@ -37,8 +38,9 @@ export const GetCurrentSelectedGroupAndMemberInfo = async () => {
 
         console.log(response)
 
+        // goto {hostname}/search/group/{groupId}/{memberId}
         // eslint-disable-next-line no-restricted-globals
-        location.href += `/${response!.members[0].id}`
+        location.href += `/${response.members[0].id}`
     }
 
     // Last, {hostname}/search/group/{groupId}/{memberId}
@@ -51,8 +53,8 @@ export const GetCurrentSelectedGroupAndMemberInfo = async () => {
         })).data as MembersResponse
 
     return {
-        groups: groups!.list,
-        currentGroupMembers: response!.members
+        groups: groups.list,
+        currentGroupMembers: response.members
     } as unknown as GroupProps
 }
 
