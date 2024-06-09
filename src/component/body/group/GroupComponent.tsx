@@ -20,7 +20,7 @@ export const GroupComponent = () => {
 
     useEffect(() => {
         getGroupMemberInfo()
-    }, [loadedGroupMemberProps])
+    }, [])
 
     return group!
 
