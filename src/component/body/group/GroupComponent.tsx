@@ -3,10 +3,12 @@ import {useEffect, useState} from "react";
 import {
     GetCurrentSelectedGroupAndMemberInfo
 } from "../../../module/request/domain/group/GetCurrentSelectedGroupAndMemberInfo";
+import {SkeletonGroups} from "./SkeletonGroups";
 
 export const GroupComponent = () => {
 
-    const [group, setGroup] = useState<JSX.Element>()
+    const [group, setGroup] =
+        useState<JSX.Element>(<SkeletonGroups/>)
     let loadedGroupMemberProps: GroupProps | undefined = undefined
 
     const getGroupMemberInfo = async () => {
