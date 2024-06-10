@@ -58,12 +58,16 @@ export const Group = (props: GroupProps) => {
         }
     })
 
-    return <div className={"flex flex-col gap-[20px] pl-[100px] pe-[100px]"}>
-        <div className={"flex gap-[10px]"}>
-            {groups}
+    return <div className={"flex flex-col gap-[20px] ml-[100px] mr-[100px]"}>
+        <div className={"overflow-x-scroll w-full"}>
+            <div className={"flex gap-[10px] w-fit overflow-auto"}>
+                {groups}
+            </div>
         </div>
-        <div className={"flex gap-[10px] pl-[50px] pe-[50px]"}>
-            {members}
+        <div className={"overflow-x-scroll w-full"}>
+            <div className={"flex gap-[10px] w-fit overflow-auto pl-[50px] pe-[50px]"}>
+                {members}
+            </div>
         </div>
     </div>
 }
