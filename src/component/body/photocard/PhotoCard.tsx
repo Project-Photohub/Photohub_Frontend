@@ -1,5 +1,6 @@
 import {PhotoCardModal} from "./PhotoCardModal";
 import {PhotoCardImage} from "./PhotoCardImage";
+import {AnyRepository} from "../../../module/repository/AnyRepository";
 
 export interface PhotoCardProps {
     id: string,
@@ -18,12 +19,12 @@ export const PhotoCard = (
     setModel: (value: JSX.Element | undefined) => void
 ) => {
 
-    console.log(props.image)
+    const isLiked = new AnyRepository<boolean>(false)
 
     return (
         <div key={"photo-card" + props.id} className={`flex `}>
             <div onClick={() => {
-                setModel(PhotoCardModal(props, setModel))
+                setModel(PhotoCardModal(props, setModel, isLiked))
             }}>
                 <PhotoCardImage width={"220px"} height={"340px"} image={props.image}/>
             </div>
