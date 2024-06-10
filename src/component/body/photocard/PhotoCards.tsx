@@ -9,10 +9,9 @@ export const PhotoCards = (
     setModel: (value: JSX.Element | undefined) => void
 ) => {
 
-    if (props === undefined
-        || props.photoCardProps.length === 0
-        || props.photoCardProps[0] === undefined) {
-        return <></>
+    if (props.photoCardProps === undefined) {
+        return <>
+        </>
     }
 
     return <div className={`flex flex-wrap gap-[50px] w-full justify-center items-start content-center p-[100px]`}>
