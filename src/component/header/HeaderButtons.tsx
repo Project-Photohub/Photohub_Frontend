@@ -11,15 +11,17 @@ export const HeaderButtons = () => {
             <HeaderButton
                 iconUri={"/Plus.svg"}
                 onClick={() => {
+                    location.pathname = "/add"
                 }}
                 text={"포토카드 추가"}
             />
-            {/*<HeaderButton
+            <HeaderButton
                 iconUri={"/Profile.svg"}
                 onClick={() => {
+                    location.pathname = "/ask"
                 }}
-                text={"로그인"}
-            />*/}
+                text={"문의하기"}
+            />
         </div>
     )
 }
