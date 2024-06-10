@@ -23,7 +23,7 @@ export const SearchTypes = () => {
             <SearchType name={"Popular"}/>
             <SearchType name={"Latest"}/>
             <SearchType name={"Group"}/>
-            <SearchType name={"My"}/>
+            {/*<SearchType name={"My"}/>*/}
             <SearchType name={"Random"}/>
         </div>
     )
