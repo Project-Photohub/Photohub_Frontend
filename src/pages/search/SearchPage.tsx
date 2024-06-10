@@ -1,11 +1,11 @@
 import {RecommendAdd} from "../../component/body/RecommendAdd";
 import {PageBase} from "../PageBase";
-import {MockPhotoCards} from "../../component/body/photocard/MockPhotoCards";
+import {PhotoCardComponent} from "../../component/body/photocard/PhotoCardComponent";
 
-export const DefaultSearchPage = () => {
+export const SearchPage = () => {
     return (
         <PageBase>
-            <MockPhotoCards/>
+            <PhotoCardComponent/>
             <RecommendAdd/>
         </PageBase>
     )

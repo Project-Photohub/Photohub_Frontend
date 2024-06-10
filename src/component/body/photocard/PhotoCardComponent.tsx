@@ -1,11 +1,13 @@
-import {PhotoCards} from "./PhotoCards";
+import {PhotoCards, PhotoCardsProps} from "./PhotoCards";
 import {
     GetCurrentMemberPhotoCardsProps
 } from "../../../module/request/domain/photocard/GetCurrentMemberPhotoCardsProps";
 import {useEffect, useState} from "react";
 import {SkeletonPhotoCards} from "./SkeletonPhotoCards";
+import {CurrentPage, PageName} from "../../../initializer/CurrentPage";
+import {GetDefaultPhotoCardsProps} from "../../../module/request/domain/photocard/GetDefaultPhotoCardsProps";
 
-export const MemberPhotoCardComponent = () => {
+export const PhotoCardComponent = () => {
 
     const [component, setComponent] =
         useState<JSX.Element>(
@@ -16,7 +18,14 @@ export const MemberPhotoCardComponent = () => {
         useState<JSX.Element | undefined>()
 
     const insertProps = async () => {
-        const props = await GetCurrentMemberPhotoCardsProps();
+
+        let props: PhotoCardsProps
+
+        if (CurrentPage.getCurrentPage() === PageName.GROUP.toString()) {
+            props = await GetCurrentMemberPhotoCardsProps()
+        } else {
+            props = await GetDefaultPhotoCardsProps()
+        }
 
         setComponent(
             PhotoCards(
