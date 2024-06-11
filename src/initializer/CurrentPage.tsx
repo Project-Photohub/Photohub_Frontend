@@ -2,10 +2,9 @@ export enum PageName {
     POPULAR = "popular",
     LATEST = "latest",
     GROUP = "group",
-    MY = "my",
     RANDOM = "random",
-    LOGIN = "login",
-    SIGNUP = "signup",
+    ADD = "add",
+    ASK = "ask",
     OTHER = "other"
 }
 
