@@ -13,11 +13,11 @@ export const HeaderButtons = () => {
                 text={"포토카드 추가"}
                 gotoPath={"/add"}
             />
-            <HeaderButton
+            {/*<HeaderButton
                 iconUri={"/Profile.svg"}
                 text={"문의하기"}
                 gotoPath={"/ask"}
-            />
+            />*/}
         </div>
     )
 }
