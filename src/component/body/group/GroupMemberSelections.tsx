@@ -32,17 +32,14 @@ export interface GroupMemberSelectionState {
     setSelectedGroupId: (value: number) => void
     selectedMemberId: number,
     setSelectedMemberId: (value: number) => void
-    callGroupClickEvent: () => void
+    callGroupClickEvent: (groupId: number) => void
     callMemberClickEvent: () => void
 }
 
 export const GroupMemberSelections = (props: GroupMemberSelectionsProps) => {
     return (
         <div className={"flex flex-col gap-[20px] ml-[100px] mr-[100px]"}>
-            <div className={"overflow-x-scroll w-full"}
-                 onClick={(event) => {
-                     props.state.callGroupClickEvent()
-                 }}>
+            <div className={"overflow-x-scroll w-full"}>
                 <div className={"flex gap-[10px] w-fit overflow-auto"}>
                     {
                         props.info.groups.map((value) => {
@@ -52,17 +49,18 @@ export const GroupMemberSelections = (props: GroupMemberSelectionsProps) => {
                                     name={value.group.name}
                                     logo={value.group.logo}
                                     selectedGroupId={props.state.selectedGroupId}
-                                    setSelectedGroupId={props.state.setSelectedGroupId}/>
+                                    setSelectedGroupId={props.state.setSelectedGroupId}
+                                    callGroupClickEvent={props.state.callGroupClickEvent}/>
                             )
                         })
                     }
                 </div>
             </div>
-            <div className={"overflow-x-scroll w-full"}
-                 onClick={(event) => {
-                     props.state.callMemberClickEvent()
-                 }}>
-                <div className={"flex gap-[10px] w-fit overflow-auto pl-[50px] pe-[50px]"}>
+            <div className={"overflow-x-scroll w-full"}>
+                <div className={"flex gap-[10px] w-fit overflow-auto pl-[50px] pe-[50px]"}
+                     onClick={() => {
+                         props.state.callMemberClickEvent()
+                     }}>
                     {
                         props.info.groups.filter((value) => {
                             return value.group.id === props.state.selectedGroupId

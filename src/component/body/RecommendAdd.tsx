@@ -15,9 +15,8 @@ export const RecommendAdd = () => {
         </div>
         <HeaderButton
             iconUri={"/Plus.svg"}
-            onClick={() => {
-            }}
             text={"포토카드 추가"}
+            gotoPath={"/add"}
         />
     </div>)
 }

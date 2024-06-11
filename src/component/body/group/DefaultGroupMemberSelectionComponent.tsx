@@ -8,20 +8,20 @@ import {AnyRepository} from "../../../module/repository/AnyRepository";
 const info =
     new AnyRepository<GroupMemberInfoList | undefined>(undefined)
 
-let [currentGroupId, currentMemberId] = [0, 0]
+export let [currentGroupId, currentMemberId] = [0, 0]
 
 export const DefaultGroupMemberSelectionComponent = () => {
 
     const [group, setGroup] =
         useState<JSX.Element>(<SkeletonGroups/>)
 
-    const [clickEvent, setClickEvent] =
-        useState(0);
-
     const [selectedGroupId, setSelectedGroupId] =
         useState<number>(1)
     const [selectedMemberId, setSelectedMemberId] =
         useState<number>(1)
+
+    const [clickEvent, setClickEvent] =
+        useState([1, selectedGroupId]);
 
     const getGroupMemberInfo = async () => {
 
@@ -37,14 +37,23 @@ export const DefaultGroupMemberSelectionComponent = () => {
             setSelectedMemberId(info.data!.groups[0].members[0].id)
         }
 
-        if (clickEvent === 1) {
+        let newSelectedMemberId: number = selectedMemberId
+
+        if (clickEvent[0] === 0) {
+            return
+        }
+
+        if (clickEvent[0] === 1) {
             info.data.groups.forEach((value) => {
-                    if (selectedGroupId == value.group.id) {
+                    if (clickEvent[1] == value.group.id) {
                         setSelectedMemberId(value.members[0].id)
+                        newSelectedMemberId = value.members[0].id
                     }
                 }
             )
         }
+
+        setClickEvent([0, clickEvent[1]])
 
         setGroup(
             GroupMemberSelections(
@@ -53,13 +62,13 @@ export const DefaultGroupMemberSelectionComponent = () => {
                     state: {
                         selectedGroupId: selectedGroupId,
                         setSelectedGroupId: setSelectedGroupId,
-                        selectedMemberId: selectedMemberId,
+                        selectedMemberId: newSelectedMemberId,
                         setSelectedMemberId: setSelectedMemberId,
-                        callGroupClickEvent: () => {
-                            setClickEvent(1)
+                        callGroupClickEvent: (groupId: number) => {
+                            setClickEvent([1, groupId])
                         },
                         callMemberClickEvent: () => {
-                            setClickEvent(2)
+                            setClickEvent([2, selectedGroupId])
                         }
                     }
                 }
