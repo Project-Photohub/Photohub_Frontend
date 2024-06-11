@@ -10,17 +10,13 @@ export const HeaderButtons = () => {
             />*/}
             <HeaderButton
                 iconUri={"/Plus.svg"}
-                onClick={() => {
-                    location.pathname = "/add"
-                }}
                 text={"포토카드 추가"}
+                gotoPath={"/add"}
             />
             <HeaderButton
                 iconUri={"/Profile.svg"}
-                onClick={() => {
-                    location.pathname = "/ask"
-                }}
                 text={"문의하기"}
+                gotoPath={"/ask"}
             />
         </div>
     )
