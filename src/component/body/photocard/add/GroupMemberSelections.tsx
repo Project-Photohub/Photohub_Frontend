@@ -32,16 +32,17 @@ export interface GroupMemberSelectionState {
     setSelectedGroupId: (value: number) => void
     selectedMemberId: number,
     setSelectedMemberId: (value: number) => void
-    plusClickCount: () => void
+    callGroupClickEvent: () => void
+    callMemberClickEvent: () => void
 }
 
 export const GroupMemberSelections = (props: GroupMemberSelectionsProps) => {
     return (
-        <div className={"flex flex-col gap-[20px] ml-[100px] mr-[100px]"}
-             onClick={(event) => {
-                 props.state.plusClickCount()
-             }}>
-            <div className={"overflow-x-scroll w-full"}>
+        <div className={"flex flex-col gap-[20px] ml-[100px] mr-[100px]"}>
+            <div className={"overflow-x-scroll w-full"}
+                 onClick={(event) => {
+                     props.state.callGroupClickEvent()
+                 }}>
                 <div className={"flex gap-[10px] w-fit overflow-auto"}>
                     {
                         props.info.groups.map((value) => {
@@ -57,7 +58,10 @@ export const GroupMemberSelections = (props: GroupMemberSelectionsProps) => {
                     }
                 </div>
             </div>
-            <div className={"overflow-x-scroll w-full"}>
+            <div className={"overflow-x-scroll w-full"}
+                 onClick={(event) => {
+                     props.state.callMemberClickEvent()
+                 }}>
                 <div className={"flex gap-[10px] w-fit overflow-auto pl-[50px] pe-[50px]"}>
                     {
                         props.info.groups.filter((value) => {

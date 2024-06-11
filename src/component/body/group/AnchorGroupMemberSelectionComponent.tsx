@@ -1,16 +1,14 @@
-import {GroupMemberInfoList, GroupMemberSelections} from "./GroupMemberSelections";
 import {useEffect, useState} from "react";
-import {SkeletonGroups} from "../../group/SkeletonGroups";
+import {SkeletonGroups} from "./SkeletonGroups";
 import axios from "axios";
-import {HttpMethod} from "../../../../module/request/ServerInfo";
-import {AnyRepository} from "../../../../module/repository/AnyRepository";
+import {HttpMethod} from "../../../module/request/ServerInfo";
+import {GroupMemberInfoList, GroupMemberSelections} from "../photocard/add/GroupMemberSelections";
+import {AnyRepository} from "../../../module/repository/AnyRepository";
 
 const info =
     new AnyRepository<GroupMemberInfoList | undefined>(undefined)
 
-let [currentGroupId, currentMemberId] = [0, 0]
-
-export const DefaultGroupMemberSelectionComponent = () => {
+export const AnchorGroupMemberSelectionComponent = () => {
 
     const [group, setGroup] =
         useState<JSX.Element>(<SkeletonGroups/>)
@@ -18,10 +16,15 @@ export const DefaultGroupMemberSelectionComponent = () => {
     const [clickEvent, setClickEvent] =
         useState(0);
 
+    if (location.pathname === "/search/group") {
+        location.pathname = `/search/group/1/1`
+    }
+
+    const paths = location.pathname.split('/')
     const [selectedGroupId, setSelectedGroupId] =
-        useState<number>(1)
+        useState<number>(Number(paths[paths.length - 2]))
     const [selectedMemberId, setSelectedMemberId] =
-        useState<number>(1)
+        useState<number>(Number(paths[paths.length - 1]))
 
     const getGroupMemberInfo = async () => {
 
@@ -32,18 +35,6 @@ export const DefaultGroupMemberSelectionComponent = () => {
             })
 
             info.data = response.data as GroupMemberInfoList
-
-            setSelectedGroupId(info.data!.groups[0].group.id)
-            setSelectedMemberId(info.data!.groups[0].members[0].id)
-        }
-
-        if (clickEvent === 1) {
-            info.data.groups.forEach((value) => {
-                    if (selectedGroupId == value.group.id) {
-                        setSelectedMemberId(value.members[0].id)
-                    }
-                }
-            )
         }
 
         setGroup(
@@ -65,14 +56,24 @@ export const DefaultGroupMemberSelectionComponent = () => {
                 }
             )
         )
-
-        currentGroupId = selectedGroupId
-        currentMemberId = selectedMemberId
     }
 
     useEffect(() => {
         getGroupMemberInfo()
-    }, [clickEvent])
+    }, [])
+
+    useEffect(() => {
+        if (clickEvent === 1) {
+            location.pathname = `/search/group/${selectedGroupId}/${
+                info.data!.groups.filter((value) => {
+                        return selectedGroupId == value.group.id
+                    }
+                )[0].members[0].id
+            }`
+        } else if (clickEvent === 2) {
+            location.pathname = `/search/group/${selectedGroupId}/${selectedMemberId}`
+        }
+    }, [clickEvent]);
 
     return group!
 }
