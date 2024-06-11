@@ -4,7 +4,11 @@ module.exports = {
         "./index.html",
         "./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
-        extend: {},
+        extend: {
+            boxShadow: {
+                'blur-modal': "0 0 80px 80px rgba(0, 0, 0, 0.25)"
+            }
+        },
         colors: {
             "text": {
                 "black": "#000000",

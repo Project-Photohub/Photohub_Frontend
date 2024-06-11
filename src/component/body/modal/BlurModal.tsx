@@ -20,7 +20,7 @@ export const BlurModal = (
 
                 {/* The Modal. */}
                 <div
-                    className={"flex flex-col gap-[30px] items-center rounded-[30px] bg-background-highlight w-[1000px] pt-[20px] pb-[20px] pl-[50px] pe-[50px]"}
+                    className={"flex flex-col gap-[30px] items-center rounded-[30px] bg-background-highlight w-[1000px] pt-[20px] pb-[20px] pl-[50px] pe-[50px] shadow-blur-modal"}
                     onClick={(event) => {
                         event.stopPropagation()
                     }}>
