@@ -1,9 +1,9 @@
 import {GroupMemberInfoList, GroupMemberSelections} from "./GroupMemberSelections";
 import {useEffect, useState} from "react";
-import {SkeletonGroups} from "../../group/SkeletonGroups";
+import {SkeletonGroups} from "./SkeletonGroups";
 import axios from "axios";
-import {HttpMethod} from "../../../../module/request/ServerInfo";
-import {AnyRepository} from "../../../../module/repository/AnyRepository";
+import {HttpMethod} from "../../../module/request/ServerInfo";
+import {AnyRepository} from "../../../module/repository/AnyRepository";
 
 const info =
     new AnyRepository<GroupMemberInfoList | undefined>(undefined)

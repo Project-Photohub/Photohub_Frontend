@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {SkeletonGroups} from "./SkeletonGroups";
 import axios from "axios";
 import {HttpMethod} from "../../../module/request/ServerInfo";
-import {GroupMemberInfoList, GroupMemberSelections} from "../photocard/add/GroupMemberSelections";
+import {GroupMemberInfoList, GroupMemberSelections} from "./GroupMemberSelections";
 import {AnyRepository} from "../../../module/repository/AnyRepository";
 
 const info =
