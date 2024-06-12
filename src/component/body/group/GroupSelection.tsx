@@ -15,7 +15,7 @@ export const GroupSelection = (props: GroupSelectionProps) => {
             props.callGroupClickEvent(props.id)
             props.setSelectedGroupId(props.id)
         }}>
-        <img className={"h-[50px] w-[50px]"} src={props.logo} alt={props.name} height={"50px"} width={"50px"}/>
+        <img className={"h-[50px] w-[50px] object-contain"} src={props.logo} alt={props.name} height={"50px"} width={"50px"}/>
         <p className={"font-preahvihear text-text-white text-[32px]"}>{props.name}</p>
     </div>
 };

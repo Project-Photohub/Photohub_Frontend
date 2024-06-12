@@ -2,14 +2,19 @@ import {PageBase} from "../PageBase";
 import {InputPhotoCard} from "../../component/body/photocard/add/InputPhotoCard";
 import {useState} from "react";
 import {
+    currentGroupId,
     currentMemberId,
     DefaultGroupMemberSelectionComponent
 } from "../../component/body/group/DefaultGroupMemberSelectionComponent";
 import {DivButton} from "../../component/button/DivButton";
 import axios from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
+import {BlurModal} from "../../component/body/modal/BlurModal";
 
 export const AddPhotoCardPage = () => {
+
+    const [modal, setModal] =
+        useState<JSX.Element | undefined>()
 
     const [image, setImage] =
         useState<string | null>("images/inputImage.png");
@@ -45,28 +50,42 @@ export const AddPhotoCardPage = () => {
             </div>
 
             <div className={"flex flex-row w-full justify-center gap-[30px]"}>
-                <InputPhotoCard image={image} setImage={setImage}/>
-                <InputPhotoCard image={backImage} setImage={setBackImage}/>
+                <InputPhotoCard image={image} setImage={setImage} setModal={setModal}/>
+                <InputPhotoCard image={backImage} setImage={setBackImage} setModal={setModal}/>
             </div>
 
             <div className={"flex flex-row w-full justify-center"}>
-                <DivButton className={"flex w-fit bg-[#FF9000] rounded-[10px] pl-[100px] pr-[100px] pt-[20px] pb-[20px]"} onClick={() => {
-                    axios.request({
-                        method: HttpMethod.POST,
-                        url: "/photo-cards/url",
-                        data: {
-                            image: image,
-                            backImage: backImage,
-                            name: title,
-                            memberId: currentMemberId
+                <DivButton
+                    className={"flex w-fit bg-[#FF9000] rounded-[10px] pl-[100px] pr-[100px] pt-[20px] pb-[20px]"}
+                    onClick={() => {
+                        if (image === undefined || backImage === undefined || title === undefined) {
+                            setModal(
+                                <BlurModal setModel={setModal}>
+                                    <p>오류</p>
+                                    <p>입력되지 않은 칸이 있습니다.</p>
+                                </BlurModal>
+                            )
+                            return
                         }
-                    })
 
-                    console.log("asd")
-                }}>
+                        axios.request({
+                            method: HttpMethod.POST,
+                            url: "/photo-cards/url",
+                            data: {
+                                image: image,
+                                backImage: backImage,
+                                name: title,
+                                memberId: currentMemberId
+                            }
+                        }).then(() => {
+                            location.pathname = `/search/group/${currentGroupId}/${currentMemberId}`
+                        })
+                    }}>
                     <p className={"text-text-black text-[32px] font-p-extra-bold"}>Submit</p>
                 </DivButton>
             </div>
+
+            {modal !== undefined ? modal : <></>}
         </PageBase>
     )
 }
