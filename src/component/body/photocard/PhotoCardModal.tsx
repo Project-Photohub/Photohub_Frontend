@@ -45,7 +45,7 @@ const PhotoCardModalInfo = (props: PhotoCardModalProps) => {
         <div className={"flex flex-col items-center"}>
             <p className={"text-text-white font-p-semi-bold text-[36px]"}>{props.name}</p>
             <p className={"text-text-subtext2 font-preahvihear text-[24px]"}>
-                {`${props.groupName}, ${props.memberNickname} ${props.memberName}`}
+                {`${props.groupName}, ${props.memberNickname != null ? (props.memberNickname + " ") : ""}${props.memberName}`}
             </p>
             <p className={"text-text-subtext3 font-p-light text-[20px]"}>
                 {props.createdAt}

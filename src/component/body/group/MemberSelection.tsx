@@ -13,7 +13,10 @@ export const MemberSelection = (props: MemberSelectionProps) => {
         onClick={() => {
             props.setSelectedMemberId(props.id)
         }}>
-        <p className={"font-preahvihear text-text-subtext2 text-[32px]"}>{props.nickname}</p>
+        {
+            props.nickname &&
+            <p className={"font-preahvihear text-text-subtext2 text-[32px]"}>{props.nickname}</p>
+        }
         <p className={"font-p-regular text-text-white text-[32px]"}>{props.name}</p>
     </div>
 };
