@@ -1,40 +1,43 @@
-import {useState} from "react";
 import {PhotoCardImage} from "../PhotoCardImage";
-import {BlurModal} from "../../modal/BlurModal";
 
 export interface InputPhotoCardProps {
     image: string | null
     setImage: (value: string | null) => void
+    setImageFile: (value: File | null) => void
     setModal: (value: JSX.Element | undefined) => void
+    id: number
 }
 
 export const InputPhotoCard = (props: InputPhotoCardProps) => {
-
     return (
         <div>
-            <div onClick={() => {
-                props.setModal(
-                    <BlurModal setModel={props.setModal}>
-                        <input type={"text"} placeholder={"이미지 링크를 삽입해주세요."}
-                               onInput={(input) => {
-                                   const text = (input.target as HTMLInputElement).value
+            <input id={`input-photo-card-${props.id}`}
+                   type={"file"}
+                   accept={"image/png,image/jpeg,image/heic"}
+                   multiple={false}
+                   hidden={true}
+                   onInput={(input) => {
+                       const file = (input.target as HTMLInputElement).files?.item(0)
 
-                                   if (text === null || text === undefined || text.trim() === "") {
-                                       props.setImage(null)
-                                   } else {
-                                       props.setImage((input.target as HTMLInputElement).value)
-                                   }
-                               }}
-                               className={"bg-background-highlight placeholder:text-text-subtext3 placeholder:font-p-light outline-0 text-text-white w-[500px] pl-[30px] pr-[30px] pt-[10px] pb-[10px]"}/>
-                        <></>
-                    </BlurModal>
-                )
-            }}>
+                       if (file === null || file === undefined) {
+                           props.setImage(null)
+                           props.setImageFile(null)
+                       } else {
+                           const reader = new FileReader()
+                           reader.readAsDataURL(file)
+                           reader.onload = (event) => {
+                               props.setImageFile(file)
+                               props.setImage(event.target!.result as string)
+                           }
+                       }
+                   }}
+                   className={"bg-background-highlight placeholder:text-text-subtext3 placeholder:font-p-light outline-0 text-text-white w-[500px] pl-[30px] pr-[30px] pt-[10px] pb-[10px]"}/>
+            <label htmlFor={`input-photo-card-${props.id}`}>
                 <PhotoCardImage
                     image={props.image !== null ? props.image : "/images/inputImage.png"}
                     width={"440px"} height={"680px"}
                 />
-            </div>
+            </label>
         </div>
     )
 }

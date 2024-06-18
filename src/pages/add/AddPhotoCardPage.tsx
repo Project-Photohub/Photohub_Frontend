@@ -18,8 +18,12 @@ export const AddPhotoCardPage = () => {
 
     const [image, setImage] =
         useState<string | null>("images/inputImage.png");
+    const [imageFile, setImageFile] =
+        useState<File | null>(null);
     const [backImage, setBackImage] =
         useState<string | null>("images/inputImage.png");
+    const [backImageFile, setBackImageFile] =
+        useState<File | null>(null);
     const [title, setTitle] =
         useState<string | null>()
 
@@ -50,15 +54,17 @@ export const AddPhotoCardPage = () => {
             </div>
 
             <div className={"flex flex-row w-full justify-center gap-[30px]"}>
-                <InputPhotoCard image={image} setImage={setImage} setModal={setModal}/>
-                <InputPhotoCard image={backImage} setImage={setBackImage} setModal={setModal}/>
+                <InputPhotoCard image={image} setImage={setImage}
+                                setImageFile={setImageFile} setModal={setModal} id={1}/>
+                <InputPhotoCard image={backImage} setImage={setBackImage}
+                                setImageFile={setBackImageFile} setModal={setModal} id={2}/>
             </div>
 
             <div className={"flex flex-row w-full justify-center"}>
                 <DivButton
                     className={"flex w-fit bg-[#FF9000] rounded-[10px] pl-[100px] pr-[100px] pt-[20px] pb-[20px]"}
                     onClick={() => {
-                        if (image === undefined || backImage === undefined || title === undefined) {
+                        if (imageFile === null || backImageFile === null || title === undefined || title === null) {
                             setModal(
                                 <BlurModal setModel={setModal}>
                                     <p>오류</p>
@@ -68,14 +74,19 @@ export const AddPhotoCardPage = () => {
                             return
                         }
 
+                        const formData = new FormData()
+
+                        formData.append('image', imageFile)
+                        formData.append('backImage', backImageFile)
+                        formData.append('name', title)
+                        formData.append('memberId', currentMemberId.toString())
+
                         axios.request({
                             method: HttpMethod.POST,
-                            url: "/photo-cards/url",
-                            data: {
-                                image: image,
-                                backImage: backImage,
-                                name: title,
-                                memberId: currentMemberId
+                            url: "/photo-cards",
+                            data: formData,
+                            headers: {
+                                "Content-Type": "multipart/form-data"
                             }
                         }).then(() => {
                             location.pathname = `/search/group/${currentGroupId}/${currentMemberId}`
