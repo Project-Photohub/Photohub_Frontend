@@ -10,11 +10,11 @@ import {DivButton} from "../../component/button/DivButton";
 import axios from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
 import {BlurModal} from "../../component/body/modal/BlurModal";
+import {getTopLevelModalSetter} from "../ModalBase";
 
 export const AddPhotoCardPage = () => {
 
-    const [modal, setModal] =
-        useState<JSX.Element | undefined>()
+    const setModal = getTopLevelModalSetter()
 
     const [image, setImage] =
         useState<string | null>("images/inputImage.png");
@@ -46,7 +46,7 @@ export const AddPhotoCardPage = () => {
                     />
                 </div>
             </div>
-            <div className={"flex flex-col gap-[50px]"}>
+            <div className={"flex flex-col gap-[30px]"}>
                 <div className={"flex pl-[100px]"}>
                     <p className={"font-light text-text-subtext3 text-[32px]"}>누구에 대한 포토카드인가요?</p>
                 </div>
@@ -95,8 +95,6 @@ export const AddPhotoCardPage = () => {
                     <p className={"text-text-black text-[32px] font-p-extra-bold"}>Submit</p>
                 </DivButton>
             </div>
-
-            {modal !== undefined ? modal : <></>}
         </PageBase>
     )
 }
