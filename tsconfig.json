@@ -23,22 +23,23 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
+
+    /*"baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
+      "@*//*": [
+        "./src*//*"
       ],
-      "@component/*": [
-        "./src/component/*"
+      "@component*//*": [
+        "./src/component*//*"
       ],
-      "@asset/*": [
-        "./src/asset/*"
+      "@asset*//*": [
+        "./src/asset*//*"
       ],
-      "@app/*": [
-        "./src/app/*"
+      "@app*//*": [
+        "./src/app*//*"
       ]
     }
-  },
+  },*/
   "include": [
     "src"
   ]
