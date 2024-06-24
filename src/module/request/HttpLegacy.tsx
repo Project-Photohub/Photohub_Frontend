@@ -1,8 +1,9 @@
+export {}/*
 // 코드 기록용 레거시, 사용되지 않음
 
 import http from "node:http";
 
-/*export*/ enum HttpMethod {
+export enum HttpMethod {
     GET = "GET",
     POST = "POST",
     PATCH = "PATCH",
@@ -13,13 +14,13 @@ import http from "node:http";
     OPTIONS = "OPTIONS"
 }
 
-/*export*/ enum HttpHeader {
+export enum HttpHeader {
     AUTHORIZATION = "Authorization",
     CONTENT_TYPE = "Content-Type",
     CONTENT_LENGTH = "Content-Length",
 }
 
-/*export*/ const ServerInfo = {
+export const ServerInfo = {
 
     PROTOCOL: "http" as const,
 
@@ -28,16 +29,16 @@ import http from "node:http";
     HOST: "localhost:8080" as const
 }
 
-/*export*/ const BASE_URL = ServerInfo.PROTOCOL + "://" + ServerInfo.HOST
+export const BASE_URL = ServerInfo.PROTOCOL + "://" + ServerInfo.HOST
 
-/**
+/!**
  * http 모듈보다 더 고수준에서 요청을 보내기 위한 모듈
  *
  * 주어진 Request에 추가적으로 기본 설정이 덧붙여짐
  *
  * @param request Request 정보
- */
-/*export*/ const HttpJsonRequestSender = (request: HttpJsonRequest) => {
+ *!/
+export const HttpJsonRequestSender = (request: HttpJsonRequest) => {
     let responseToReturn: http.IncomingMessage
 
     const sendAbleRequest = http.request({
@@ -72,10 +73,10 @@ import http from "node:http";
     return responseToReturn!
 }
 
-/*export*/ interface HttpJsonRequest {
+export interface HttpJsonRequest {
     method: HttpMethod
     path: string
     headers?: Map<string, string>
     params?: Map<string, string>
     data?: JSON
-}
+}*/
