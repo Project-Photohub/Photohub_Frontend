@@ -1,0 +1,7 @@
+config:
+  name: photohub-frontend
+  port: 8080
+  service_type: fe
+  domain:
+    prod: photohub.xquare.app
+    stag: photohub-stag.xquare.app
