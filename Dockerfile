@@ -10,4 +10,4 @@ RUN npm build
 
 EXPOSE 5173
 
-CMD ["npm", "dev"]
+CMD ["npm", "build"]
