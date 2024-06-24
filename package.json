@@ -2,6 +2,7 @@
   "name": "photohub",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
