@@ -4,8 +4,6 @@ WORKDIR /user/src/app
 
 COPY package.json .
 
-RUN npm
-
 COPY . .
 
 RUN npm build
