@@ -23,7 +23,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
     /*"baseUrl": ".",
     "paths": {
       "@*//*": [
@@ -38,8 +37,8 @@
       "@app*//*": [
         "./src/app*//*"
       ]
-    }
-  },*/
+    }*/
+  },
   "include": [
     "src"
   ]
