@@ -16,16 +16,13 @@ export const FooterElements = () => {
                 </p>
             </FooterElement>
             <FooterElement>
-                <HeaderButton iconUri={"/Github.svg"} text={"Daybreak312"} onClick={() => {
-                    window.open("https://github.com/Daybreak312")
-                }}/>
-                <HeaderButton iconUri={"/Github.svg"} text={"Photohub Backend"} onClick={() => {
-                    window.open("https://github.com/Project-Photohub/Photohub_Backend")
-                }}/>
-                <HeaderButton iconUri={"/Github.svg"} text={"Photohub Frontend"} onClick={() => {
-                    window.open("https://github.com/Project-Photohub/Photohub_Frontend")
-                }}/>
+                <HeaderButton iconUri={"/Github.svg"} text={"Daybreak312"}
+                              gotoPath={"https://github.com/Daybreak312"}/>
+                <HeaderButton iconUri={"/Github.svg"} text={"Photohub Backend"}
+                              gotoPath={"https://github.com/Project-Photohub/Photohub_Backend"}/>
+                <HeaderButton iconUri={"/Github.svg"} text={"Photohub Frontend"}
+                              gotoPath={"https://github.com/Project-Photohub/Photohub_Frontend"}/>
             </FooterElement>
         </div>
-)
+    )
 }

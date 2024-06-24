@@ -1,4 +1,4 @@
-import {GroupInfo, MemberInfo} from "../../component/body/group/Group";
+import {GroupInfo, MemberInfo} from "../../component/body/group/GroupMemberSelections";
 
 export interface Entity {
     group: GroupInfo | undefined,
