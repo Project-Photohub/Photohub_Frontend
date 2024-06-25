@@ -1,6 +1,8 @@
 # node 프로덕션 배포 환경 구축
 FROM node:20.14 AS node
 
+ENV MODE=stag
+
 # 파일 로드
 COPY . .
 
@@ -8,7 +10,7 @@ COPY . .
 RUN npm install
 
 # 프로덕션용 파일 빌드
-RUN npm run build
+RUN npm run build --mode $MODE
 
 # WS 엔진 환경 구축
 FROM nginx

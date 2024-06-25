@@ -1,5 +1,5 @@
 import axios from "axios";
-import {BASE_URL, FRONT_BASE_URL, HttpMethod} from "../module/request/ServerInfo";
+import {BASE_URL, FRONT_BASE_URL} from "../module/request/ServerInfo";
 
 export const AxiosConfigure = () => {
     axios.defaults.baseURL = BASE_URL

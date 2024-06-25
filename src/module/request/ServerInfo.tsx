@@ -8,16 +8,7 @@ export enum HttpMethod {
     OPTIONS = "OPTIONS"
 }
 
-export const ServerInfo = {
+export const BASE_URL = import.meta.env.VITE_BASE_URL
+export const FRONT_BASE_URL = import.meta.env.VITE_FRONT_BASE_URL
 
-    PROTOCOL: "https" as const,
-
-    HOSTNAME: "photohub-backend-stag.xquare.app" as const,
-    PORT: 8080 as const,
-    HOST: "photohub-backend-stag.xquare.app" as const,
-
-    FRONT_HOST: "photohub-stag.xquare.app" as const,
-}
-
-export const BASE_URL = ServerInfo.PROTOCOL + "://" + ServerInfo.HOST
-export const FRONT_BASE_URL = ServerInfo.PROTOCOL + "://" + ServerInfo.FRONT_HOST
+console.log(BASE_URL, " | ", FRONT_BASE_URL)
