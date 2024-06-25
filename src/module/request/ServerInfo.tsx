@@ -15,6 +15,9 @@ export const ServerInfo = {
     HOSTNAME: "photohub-backend-stag.xquare.app" as const,
     PORT: 8080 as const,
     HOST: "photohub-backend-stag.xquare.app" as const,
+
+    FRONT_HOST: "photohub-stag.xquare.app" as const,
 }
 
 export const BASE_URL = ServerInfo.PROTOCOL + "://" + ServerInfo.HOST
+export const FRONT_BASE_URL = ServerInfo.PROTOCOL + "://" + ServerInfo.FRONT_HOST
