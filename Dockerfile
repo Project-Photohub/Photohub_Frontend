@@ -26,7 +26,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY ./nginx/nginx.conf /etc/nginx/conf.d
 
 # 도커를 nginx, vite가 있는 80 포트와 연결
-EXPOSE 5173
+EXPOSE 80
 
 # nginx 백그라운드 환경으로 실행
 CMD ["nginx", "-g", "daemon off;"]
