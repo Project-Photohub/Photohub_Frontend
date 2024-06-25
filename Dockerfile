@@ -1,6 +1,8 @@
 # node 프로덕션 배포 환경 구축
 FROM node:20.14 AS node
 
+RUN apk add --no-cache libc6-compat
+
 # 파일 로드
 COPY . .
 
