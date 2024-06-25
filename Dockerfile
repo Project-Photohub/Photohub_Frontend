@@ -8,4 +8,4 @@ RUN npm install
 
 EXPOSE 5173
 
-RUN vite
+RUN npm vite
