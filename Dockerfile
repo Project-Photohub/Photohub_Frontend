@@ -21,7 +21,7 @@ FROM nginx
 WORKDIR /user/src/app
 
 # nginx 구동 폴더로 프로덕션 빌드 파일 전송
-COPY --from=node ./dist /usr/share/nginx/html
+COPY --from=node ./user/src/app/dist /usr/share/nginx/html
 
 # 도커를 5173 포트와 연결
 EXPOSE 5173
