@@ -26,4 +26,4 @@ COPY nginx/default.conf /etc/nginx/conf.d
 EXPOSE 80
 
 # nginx 백그라운드 환경으로 실행
-CMD ["nginx"]
+CMD ["nginx", "-g", "daemon off;"]
