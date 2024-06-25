@@ -7,5 +7,7 @@ COPY . .
 # 패키지 다운로드
 RUN npm install
 
+EXPOSE 5173
+
 # 프로덕션용 파일 빌드
-RUN npm run dev
+RUN npm run dev -w false
