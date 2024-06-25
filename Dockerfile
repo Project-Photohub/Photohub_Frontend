@@ -18,8 +18,6 @@ RUN npm run build
 # WS 엔진 환경 구축
 FROM nginx
 
-WORKDIR /user/src/app
-
 # nginx 구동 폴더로 프로덕션 빌드 파일 전송
 COPY --from=node ./user/src/app/dist /usr/share/nginx/html
 
