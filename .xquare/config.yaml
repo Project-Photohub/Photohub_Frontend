@@ -1,6 +1,6 @@
 config:
   name: photohub-frontend
-  port: 8080
+  port: 5179
   service_type: fe
   domain:
     prod: photohub.xquare.app
