@@ -1,14 +1,11 @@
 # node 프로덕션 배포 환경 구축
 FROM node:20.14 AS node
 
-# package.json 로드
-COPY package.json .
+# 파일 로드
+COPY . .
 
 # 패키지 다운로드
 RUN npm install
-
-# 파일 로드
-COPY . .
 
 # 프로덕션용 파일 빌드
 RUN npm run build
@@ -23,7 +20,7 @@ COPY --from=node ./dist /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
 
 # 수동 설정 파일 로드
-COPY ./nginx/nginx.conf /etc/nginx/conf.d
+COPY nginx/default.conf /etc/nginx/conf.d
 
 # 도커를 nginx, vite가 있는 80 포트와 연결
 EXPOSE 80
