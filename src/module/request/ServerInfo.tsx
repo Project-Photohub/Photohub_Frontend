@@ -10,7 +10,7 @@ export enum HttpMethod {
 
 export const ServerInfo = {
 
-    PROTOCOL: "http" as const,
+    PROTOCOL: "https" as const,
 
     HOSTNAME: "photohub-backend-stag.xquare.app" as const,
     PORT: 8080 as const,
