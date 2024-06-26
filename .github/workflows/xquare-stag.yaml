@@ -19,6 +19,8 @@ jobs:
 
       - name: Deploy to xquare
         uses: team-xquare/xquare-deployment-action@master
+        env:
+          environment: stag
         with:
           environment: stag
           access_key: ${{ secrets.XQUARE_ACCESS_KEY }}

@@ -11,7 +11,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      environment: stag
+      environment: prod
 
     steps:
       - name: Check Out The Repository
@@ -19,6 +19,8 @@ jobs:
 
       - name: Deploy to xquare
         uses: team-xquare/xquare-deployment-action@master
+        env:
+          environment: prod
         with:
           environment: prod
           access_key: ${{ secrets.XQUARE_ACCESS_KEY }}
