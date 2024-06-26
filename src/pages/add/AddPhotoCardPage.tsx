@@ -44,6 +44,8 @@ export const AddPhotoCardPage = () => {
                                } else {
                                    setTitle((input.target as HTMLInputElement).value)
                                }
+
+                               isRequested = 0
                            }}
                     />
                 </div>
@@ -69,6 +71,9 @@ export const AddPhotoCardPage = () => {
 
                         isRequested++
                         if (isRequested > 1) {
+                            setTimeout(() => {
+                                isRequested--;
+                            }, 100)
                             return
                         }
 
