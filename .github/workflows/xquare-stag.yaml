@@ -20,5 +20,3 @@ jobs:
           environment: stag
           access_key: ${{ secrets.XQUARE_ACCESS_KEY }}
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          buildargs: |
-            ENVIRONMENT: stag
