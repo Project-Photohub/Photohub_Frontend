@@ -88,9 +88,9 @@ export const AddPhotoCardPage = () => {
                             headers: {
                                 "Content-Type": "multipart/form-data"
                             }
-                        }).then(() => {
-                            location.pathname = `/search/group/${currentGroupId}/${currentMemberId}`
                         })
+
+                        location.pathname = `/search/group/${currentGroupId}/${currentMemberId}`
                     }}>
                     <p className={"text-text-black text-[32px] font-p-extra-bold"}>Submit</p>
                 </DivButton>
