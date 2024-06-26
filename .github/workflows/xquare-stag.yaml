@@ -10,6 +10,9 @@ jobs:
       contents: read
     name: Build
     runs-on: ubuntu-latest
+    env:
+      environment: stag
+
     steps:
       - name: Check Out The Repository
         uses: actions/checkout@v3
