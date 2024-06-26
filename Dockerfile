@@ -1,7 +1,8 @@
 # node 프로덕션 배포 환경 구축
 FROM node:20.14 AS node
 
-ENV ENVIRONMENT=prod
+ARG ENVIRONMENT
+ENV ENVIRONMENT $ENVIRONMENT
 
 # 파일 로드
 COPY . .
