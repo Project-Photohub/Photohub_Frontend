@@ -76,7 +76,7 @@ export const DefaultGroupMemberSelectionComponent = () => {
         )
 
         currentGroupId = selectedGroupId
-        currentMemberId = selectedMemberId
+        currentMemberId = newSelectedMemberId
     }
 
     useEffect(() => {
