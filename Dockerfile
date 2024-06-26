@@ -1,7 +1,7 @@
 # node 프로덕션 배포 환경 구축
 FROM node:20.14 AS node
 
-ARG ENVIRONMENT
+ARG ENVIRONMENT=stag
 ENV VITE_ENVIRONMENT $ENVIRONMENT
 
 # 파일 로드
