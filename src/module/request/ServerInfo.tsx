@@ -24,6 +24,3 @@ if (import.meta.env.VITE_ENVIRONMENT == "prod") {
 
 export const BASE_URL = BASE_URL_STORAGE
 export const FRONT_BASE_URL = FRONT_BASE_URL_STORAGE
-
-console.log(import.meta.env.VITE_ENVIRONMENT)
-console.log(BASE_URL, " | ", FRONT_BASE_URL)
