@@ -10,18 +10,15 @@ jobs:
       contents: read
     name: Build
     runs-on: ubuntu-latest
-    env:
-      environment: stag
-
     steps:
       - name: Check Out The Repository
         uses: actions/checkout@v3
 
       - name: Deploy to xquare
         uses: team-xquare/xquare-deployment-action@master
-        env:
-          environment: stag
         with:
           environment: stag
           access_key: ${{ secrets.XQUARE_ACCESS_KEY }}
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          buildargs: |
+            ENVIRONMENT: stag
