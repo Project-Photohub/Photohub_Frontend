@@ -17,6 +17,9 @@ if (import.meta.env.VITE_ENVIRONMENT == "prod") {
 } else if (import.meta.env.VITE_ENVIRONMENT == "stag") {
     BASE_URL_STORAGE = import.meta.env.VITE_STAG_BASE_URL
     FRONT_BASE_URL_STORAGE = import.meta.env.VITE_FRONT_STAG_BASE_URL
+} else {
+    BASE_URL_STORAGE = "http://localhost:8080"
+    FRONT_BASE_URL_STORAGE = "http://localhost:5179"
 }
 
 export const BASE_URL = BASE_URL_STORAGE

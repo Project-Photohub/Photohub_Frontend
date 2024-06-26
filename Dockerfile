@@ -1,8 +1,12 @@
 # node 프로덕션 배포 환경 구축
 FROM node:20.14 AS node
 
+ENV ENVIRONMENT=prod
+
 # 파일 로드
 COPY . .
+
+RUN echo VITE_ENVIRONMENT=$ENVIRONMENT >> .env
 
 # 패키지 다운로드
 RUN npm install
@@ -12,10 +16,6 @@ RUN npm run build
 
 # WS 엔진 환경 구축
 FROM nginx
-
-ENV MODE=stag
-
-RUN echo VITE_ENVIRONMENT=$MODE >> .env
 
 # nginx 구동 폴더로 프로덕션 빌드 파일 전송
 COPY --from=node ./dist /usr/share/nginx/html
