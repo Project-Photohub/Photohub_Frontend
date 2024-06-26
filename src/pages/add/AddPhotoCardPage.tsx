@@ -12,6 +12,8 @@ import {HttpMethod} from "../../module/request/ServerInfo";
 import {BlurModal} from "../../component/body/modal/BlurModal";
 import {getTopLevelModalSetter} from "../ModalBase";
 
+let isRequested = false
+
 export const AddPhotoCardPage = () => {
 
     const setModal = getTopLevelModalSetter()
@@ -64,33 +66,40 @@ export const AddPhotoCardPage = () => {
                 <DivButton
                     className={"flex w-fit bg-[#FF9000] rounded-[10px] pl-[100px] pr-[100px] pt-[20px] pb-[20px]"}
                     onClick={() => {
-                        if (imageFile === null || backImageFile === null || title === undefined || title === null) {
-                            setModal(
-                                <BlurModal setModel={setModal}>
-                                    <p>오류</p>
-                                    <p>입력되지 않은 칸이 있습니다.</p>
-                                </BlurModal>
-                            )
-                            return
-                        }
 
-                        const formData = new FormData()
+                        if (!isRequested) {
 
-                        formData.append('image', imageFile)
-                        formData.append('backImage', backImageFile)
-                        formData.append('name', title)
-                        formData.append('memberId', currentMemberId.toString())
+                            isRequested = true
 
-                        axios.request({
-                            method: HttpMethod.POST,
-                            url: "/photo-cards",
-                            data: formData,
-                            headers: {
-                                "Content-Type": "multipart/form-data"
+                            if (imageFile === null || backImageFile === null || title === undefined || title === null) {
+                                setModal(
+                                    <BlurModal setModel={setModal}>
+                                        <p>오류</p>
+                                        <p>입력되지 않은 칸이 있습니다.</p>
+                                    </BlurModal>
+                                )
+                                isRequested = false
+                                return
                             }
-                        })
 
-                        location.pathname = `/search/group/${currentGroupId}/${currentMemberId}`
+                            const formData = new FormData()
+
+                            formData.append('image', imageFile)
+                            formData.append('backImage', backImageFile)
+                            formData.append('name', title)
+                            formData.append('memberId', currentMemberId.toString())
+
+                            axios.request({
+                                method: HttpMethod.POST,
+                                url: "/photo-cards",
+                                data: formData,
+                                headers: {
+                                    "Content-Type": "multipart/form-data"
+                                }
+                            })
+
+                            location.pathname = `/search/group/${currentGroupId}/${currentMemberId}`
+                        }
                     }}>
                     <p className={"text-text-black text-[32px] font-p-extra-bold"}>Submit</p>
                 </DivButton>
