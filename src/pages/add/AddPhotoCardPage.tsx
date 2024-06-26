@@ -69,7 +69,6 @@ export const AddPhotoCardPage = () => {
 
                         isRequested++
                         if (isRequested > 1) {
-                            isRequested--
                             return
                         }
 
@@ -80,7 +79,7 @@ export const AddPhotoCardPage = () => {
                                     <p>입력되지 않은 칸이 있습니다.</p>
                                 </BlurModal>
                             )
-                            isRequested--;
+                            isRequested = 0;
                             return
                         }
 
