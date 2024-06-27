@@ -14,7 +14,12 @@ module.exports = {
                 "black": "#000000",
                 "white": "#EEEEEE",
                 "subtext2": "#A1A1A1",
-                "subtext3": "#898989"
+                "subtext3": "#898989",
+
+            },
+            "highlight": {
+                "orange": "#FF9000",
+                "red": "#EF3B3B"
             },
             "header": {
                 "default": "#323232",

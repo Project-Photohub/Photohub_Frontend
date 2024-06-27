@@ -5,6 +5,8 @@ export enum PageName {
     RANDOM = "random",
     ADD = "add",
     ASK = "ask",
+    LOGIN = "login",
+    SIGNUP = "signup",
     OTHER = "other"
 }
 
