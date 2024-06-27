@@ -1,22 +1,20 @@
-import {PageBase} from "../PageBase";
 import {InputPhotoCard} from "../../component/body/photocard/add/InputPhotoCard";
 import {useState} from "react";
-import {
-    currentGroupId,
-    currentMemberId,
-    DefaultGroupMemberSelectionComponent
-} from "../../component/body/group/DefaultGroupMemberSelectionComponent";
+import {currentGroupId, currentMemberId} from "../../component/body/group/DefaultGroupMemberSelectionComponent";
 import {DivButton} from "../../component/button/DivButton";
 import axios from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
 import {BlurModal} from "../../component/body/modal/BlurModal";
-import {getTopLevelModalSetter} from "../ModalBase";
+import {PageBase} from "../PageBase";
+import {InputPhotoCardTitle} from "../../component/body/photocard/add/InputPhotoCardTitle";
+import {PhotoCardGroupMemberSelector} from "../../component/body/photocard/add/PhotoCardGroupMemberSelector";
 
 let isRequested = 0
 
 export const AddPhotoCardPage = () => {
 
-    const setModal = getTopLevelModalSetter()
+    const [modal, setModal]
+        = useState<JSX.Element | undefined>();
 
     const [image, setImage] =
         useState<string | null>("images/inputImage.png");
@@ -31,31 +29,9 @@ export const AddPhotoCardPage = () => {
 
     return (
         <PageBase>
-            <div className={"flex flex-row w-full justify-start pl-[100px]"}>
-                <div
-                    className={"flex border-background-highlight border-solid border-[3px] rounded-[30px] pl-[80px] pr-[80px] pt-[20px] pb-[20px]"}>
-                    <input type={"text"} placeholder={"멋진 이름을 지어주세요!"}
-                           className={"bg-background-default placeholder:text-text-subtext3 placeholder:font-p-light outline-0  font-p-light text-text-white text-[36px]"}
-                           onInput={(input) => {
-                               const text = (input.target as HTMLInputElement).value
+            <InputPhotoCardTitle setTitle={setTitle}/>
 
-                               if (text === null || text === undefined || text.trim() === "") {
-                                   setTitle(null)
-                               } else {
-                                   setTitle((input.target as HTMLInputElement).value)
-                               }
-
-                               isRequested = 0
-                           }}
-                    />
-                </div>
-            </div>
-            <div className={"flex flex-col gap-[30px]"}>
-                <div className={"flex pl-[100px]"}>
-                    <p className={"font-light text-text-subtext3 text-[32px]"}>누구에 대한 포토카드인가요?</p>
-                </div>
-                <DefaultGroupMemberSelectionComponent/>
-            </div>
+            <PhotoCardGroupMemberSelector/>
 
             <div className={"flex flex-row w-full justify-center gap-[30px]"}>
                 <InputPhotoCard image={image} setImage={setImage}
@@ -109,6 +85,7 @@ export const AddPhotoCardPage = () => {
                     <p className={"text-text-black text-[32px] font-p-extra-bold"}>Submit</p>
                 </DivButton>
             </div>
+            {modal!}
         </PageBase>
     )
 }
