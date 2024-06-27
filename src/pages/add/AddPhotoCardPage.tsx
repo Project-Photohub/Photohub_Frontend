@@ -8,6 +8,7 @@ import {BlurModal} from "../../component/body/modal/BlurModal";
 import {PageBase} from "../PageBase";
 import {InputPhotoCardTitle} from "../../component/body/photocard/add/InputPhotoCardTitle";
 import {PhotoCardGroupMemberSelector} from "../../component/body/photocard/add/PhotoCardGroupMemberSelector";
+import {LoadingCircle} from "../../asset/LoadingCircle";
 
 let isRequested = 0
 
@@ -15,6 +16,8 @@ export const AddPhotoCardPage = () => {
 
     const [modal, setModal]
         = useState<JSX.Element | undefined>();
+    const [loading, setLoading]
+        = useState<boolean>(false);
 
     const [image, setImage] =
         useState<string | null>("images/inputImage.png");
@@ -42,16 +45,18 @@ export const AddPhotoCardPage = () => {
 
             <div className={"flex flex-row w-full justify-center"}>
                 <DivButton
-                    className={"flex w-fit bg-[#FF9000] rounded-[10px] pl-[100px] pr-[100px] pt-[20px] pb-[20px]"}
+                    className={"flex w-fit bg-[#FF9000] items-center gap-[30px] rounded-[10px] pl-[100px] pr-[100px] pt-[20px] pb-[20px]"}
                     onClick={() => {
 
                         isRequested++
                         if (isRequested > 1) {
                             setTimeout(() => {
-                                isRequested--;
+                                isRequested--
+                                setLoading(false)
                             }, 100)
                             return
                         }
+                        setLoading(true)
 
                         if (imageFile === null || backImageFile === null || title === undefined || title === null) {
                             setModal(
@@ -61,6 +66,7 @@ export const AddPhotoCardPage = () => {
                                 </BlurModal>
                             )
                             isRequested = 0;
+                            setLoading(false)
                             return
                         }
 
@@ -80,12 +86,17 @@ export const AddPhotoCardPage = () => {
                             }
                         }).then(() => {
                             location.pathname = `/search/group/${currentGroupId}/${currentMemberId}`
+                        }).catch((err) => {
+                            console.error(err)
+                            isRequested = 0;
+                            setLoading(false)
                         })
                     }}>
                     <p className={"text-text-black text-[32px] font-p-extra-bold"}>Submit</p>
                 </DivButton>
             </div>
             {modal!}
+            <LoadingCircle loading={loading}/>
         </PageBase>
     )
 }
