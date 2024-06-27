@@ -55,7 +55,7 @@ html {
 }
 
 body {
-    font-family: "Pretendard", serif;
+    font-family: "Pretendard", "Century Gothic", Inter, serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
