@@ -12,6 +12,27 @@ export interface InputPhotoCardProps {
 
 export const InputPhotoCard = (props: InputPhotoCardProps) => {
 
+    function closeInputModal() {
+        props.setModal(undefined)
+        document.onpaste = null
+    }
+
+    function setImage(file: File) {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = (event) => {
+            props.setImageFile(file)
+            props.setImage(event.target!.result as string)
+        }
+    }
+
+    function isImageFile(file: File) {
+        return file.type === "image/png" ||
+            file.type === "image/jpeg" ||
+            file.type === "image/jpg" ||
+            file.type === "image/heic"
+    }
+
     return (
         <div onClick={() => {
             document.onpaste = (event) => {
@@ -22,25 +43,15 @@ export const InputPhotoCard = (props: InputPhotoCardProps) => {
 
                 const file = event.clipboardData.files[0]
 
-                if (file.type === "image/png" ||
-                    file.type === "image/jpeg" ||
-                    file.type === "image/jpg") {
-                    const reader = new FileReader()
-                    reader.readAsDataURL(file)
-                    reader.onload = (event) => {
-                        props.setImageFile(file)
-                        props.setImage(event.target!.result as string)
-                    }
-
-                    props.setModal(undefined)
-                    document.onpaste = null
+                if (isImageFile(file)) {
+                    setImage(file)
                 }
+
+                closeInputModal()
             }
 
             props.setModal(
-                <BlurModal setModel={props.setModal} onClose={() => {
-                    document.onpaste = null
-                }}>
+                <BlurModal setModel={props.setModal} onClose={closeInputModal}>
                     <></>
                     <input id={`input-photo-card-${props.id}`}
                            type={"file"}
@@ -48,22 +59,11 @@ export const InputPhotoCard = (props: InputPhotoCardProps) => {
                            multiple={false}
                            hidden={true}
                            onInput={(input) => {
-                               const file = (input.target as HTMLInputElement).files?.item(0)
+                               const file = (input.target as HTMLInputElement).files!.item(0)!
 
-                               if (file === null || file === undefined) {
-                                   props.setImage(null)
-                                   props.setImageFile(null)
-                               } else {
-                                   const reader = new FileReader()
-                                   reader.readAsDataURL(file)
-                                   reader.onload = (event) => {
-                                       props.setImageFile(file)
-                                       props.setImage(event.target!.result as string)
-                                   }
-                               }
+                               setImage(file)
 
-                               props.setModal(undefined)
-                               document.onpaste = null
+                               closeInputModal()
                            }}/>
                     <label htmlFor={`input-photo-card-${props.id}`}>
                         <div
