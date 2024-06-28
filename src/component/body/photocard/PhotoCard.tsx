@@ -9,7 +9,9 @@ export interface PhotoCardProps {
 
 export const PhotoCard = (
     props: PhotoCardProps,
-    setModel: (value: JSX.Element | undefined) => void
+    setModel: (value: JSX.Element | undefined) => void,
+    toast: JSX.Element | undefined,
+    setToast: (value: JSX.Element | undefined) => void
 ) => {
 
     const isLiked = new AnyRepository<boolean>(false)
@@ -17,7 +19,7 @@ export const PhotoCard = (
     return (
         <div key={"photo-card" + props.id} className={`flex `}>
             <div onClick={() => {
-                PhotoCardModal(props, setModel, isLiked)
+                PhotoCardModal(props, setModel, isLiked, toast, setToast)
             }}>
                 <PhotoCardImage width={"220px"} height={"340px"} image={props.image}/>
             </div>

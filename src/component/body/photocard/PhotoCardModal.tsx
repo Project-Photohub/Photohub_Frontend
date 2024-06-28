@@ -6,6 +6,8 @@ import axios from "axios";
 import {AnyRepository} from "../../../module/repository/AnyRepository";
 import {DivIconButton} from "../../button/DivIconButton";
 import {GotoDivIconButton} from "../../button/GotoDivIconButton";
+import {PageName} from "../../../initializer/CurrentPage";
+import {CompleteCopyToast} from "../toast/CompleteCopyToast";
 
 export interface PhotoCardModalProps {
     id: string
@@ -22,7 +24,9 @@ export interface PhotoCardModalProps {
 export const PhotoCardModal = (
     props: PhotoCardProps,
     setModel: (value: JSX.Element | undefined) => void,
-    isLiked: AnyRepository<boolean>
+    isLiked: AnyRepository<boolean>,
+    toast: JSX.Element | undefined,
+    setToast: (value: JSX.Element | undefined) => void
 ) => {
 
     const PhotoCardModalInfo = (props: PhotoCardModalProps) => {
@@ -60,9 +64,17 @@ export const PhotoCardModal = (
                     }}
                     gap={"10px"} className={`rounded-[10px] p-[10px] hover:bg-photocard-addicon animated`}
                     text={"공유하기"} textSize={"32px"}
+                    onClick={() => {
+                        navigator.clipboard.writeText(location.host + `/${PageName.PHOTOCARD}/${props.id}`)
+                        if (toast === undefined) {
+                            setToast(
+                                <CompleteCopyToast toast={toast} setToast={setToast}/>
+                            )
+                        }
+                    }}
                 />
                 <GotoDivIconButton
-                    gotoPath={`/photo-card/${props.id}`}
+                    gotoPath={`/${PageName.PHOTOCARD}/${props.id}`}
                     iconProps={{
                         iconUri: "/Zoom.svg",
                         iconWidth: "40px",
@@ -77,22 +89,23 @@ export const PhotoCardModal = (
     const PhotoCardLikeApi = (props: PhotoCardModalProps) => {
 
         return (
-            <div className={"flex flex-row gap-[10px] items-center p-[10px] rounded-[10px] hover:bg-photocard-addicon animated"}
-                 onClick={(event) => {
-                     event.stopPropagation()
-                     if (!isLiked.data) {
-                         isLiked.data = true
+            <div
+                className={"flex flex-row gap-[10px] items-center p-[10px] rounded-[10px] hover:bg-photocard-addicon animated"}
+                onClick={(event) => {
+                    event.stopPropagation()
+                    if (!isLiked.data) {
+                        isLiked.data = true
 
-                         axios.request({
-                             method: HttpMethod.PATCH,
-                             url: `/photo-cards/like/${props.id}`
-                         }).catch();
+                        axios.request({
+                            method: HttpMethod.PATCH,
+                            url: `/sphoto-card/like/${props.id}`
+                        }).catch();
 
-                         (event.currentTarget.firstChild as HTMLImageElement).src = "/Filled Heart.svg";
-                         (event.currentTarget.lastChild as HTMLPreElement).innerHTML =
-                             (++(props.likeCount)).toString();
-                     }
-                 }}>
+                        (event.currentTarget.firstChild as HTMLImageElement).src = "/Filled Heart.svg";
+                        (event.currentTarget.lastChild as HTMLPreElement).innerHTML =
+                            (++(props.likeCount)).toString();
+                    }
+                }}>
                 <img src={isLiked.data ? "/Filled Heart.svg" : "/Heart.svg"}
                      width={"40px"} height={"40px"} alt={"heart"}/>
                 <p className={"text-text-white font-p-regular text-[32px]"}>{props.likeCount}</p>

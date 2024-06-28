@@ -1,3 +1,5 @@
+import {MouseEvent} from "react";
+
 export interface IconProps {
     readonly iconUri: string,
     readonly iconWidth: string,
@@ -7,7 +9,7 @@ export interface IconProps {
 export interface DivIconButtonProps {
     readonly iconProps: IconProps,
     readonly gap: string,
-    readonly onClick?: () => void,
+    readonly onClick?: ((event: React.MouseEvent) => void) | (() => void),
     readonly text?: string,
     readonly textSize?: string,
     readonly className?: string,

@@ -6,7 +6,9 @@ export interface PhotoCardsProps {
 
 export const PhotoCards = (
     props: PhotoCardsProps,
-    setModel: (value: JSX.Element | undefined) => void
+    setModel: (value: JSX.Element | undefined) => void,
+    toast: JSX.Element | undefined,
+    setToast: (value: JSX.Element | undefined) => void
 ) => {
 
     if (props.photoCardProps === undefined) {
@@ -15,6 +17,6 @@ export const PhotoCards = (
     }
 
     return <div className={`flex flex-wrap gap-[50px] w-full justify-center items-start content-center p-[100px]`}>
-        {props.photoCardProps.map((value) => PhotoCard(value, setModel))}
+        {props.photoCardProps.map((value) => PhotoCard(value, setModel, toast, setToast))}
     </div>
 }
