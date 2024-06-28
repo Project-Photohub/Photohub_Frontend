@@ -30,7 +30,9 @@ export const PhotoCardModal = (
         const props = response.data as PhotoCardModalProps
 
         setModel(
-            <BlurModal setModel={setModel}>
+            <BlurModal
+                className={"w-[980px]"}
+                setModel={setModel}>
                 {PhotoCardModalInfo(props)}
                 {PhotoCardModalImages(props)}
                 {PhotoCardLikeApi(props, isLiked)}
