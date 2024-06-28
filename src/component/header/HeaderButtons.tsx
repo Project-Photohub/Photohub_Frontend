@@ -2,7 +2,7 @@ import {HeaderButton} from "./HeaderButton";
 import {useEffect, useState} from "react";
 import axios, {AxiosError} from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
-import {deleteSessionCookie, getSessionCookie} from "../../module/cookie/CookieManager";
+import {deleteSessionId, getSessionId} from "../../module/cookie/SessionManager";
 
 export const HeaderButtons = () => {
 
@@ -15,7 +15,8 @@ export const HeaderButtons = () => {
         />)
 
     useEffect(() => {
-        if (getSessionCookie()) {
+        console.log(getSessionId())
+        if (getSessionId()) {
             axios.request({
                 method: HttpMethod.GET,
                 url: "/user"
@@ -29,7 +30,7 @@ export const HeaderButtons = () => {
                 )
             }).catch((err: AxiosError) => {
                 if (err.response?.status === 401) {
-                    deleteSessionCookie()
+                    deleteSessionId()
                 }
                 console.log(err)
             })
