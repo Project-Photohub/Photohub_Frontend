@@ -2,6 +2,7 @@ import {HeaderButton} from "./HeaderButton";
 import {useState} from "react";
 import axios, {AxiosError} from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
+import {deleteSessionCookie, getSessionCookie} from "../../module/cookie/CookieManager";
 
 export const HeaderButtons = () => {
 
@@ -13,7 +14,7 @@ export const HeaderButtons = () => {
             gotoPath={"/auth/login"}
         />)
 
-    if (document.cookie.includes("SESSIONID")) {
+    if (getSessionCookie()) {
 
         axios.request({
             method: HttpMethod.GET,
@@ -28,7 +29,7 @@ export const HeaderButtons = () => {
             )
         }).catch((err: AxiosError) => {
             if (err.response?.status === 401) {
-                document.cookie = "SESSIONID=; expire=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+                deleteSessionCookie()
             }
             console.log(err)
         })

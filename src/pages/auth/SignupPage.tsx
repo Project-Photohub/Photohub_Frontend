@@ -97,12 +97,15 @@ export const SignupPage = () => {
                     }}>
                     <div className={"flex flex-col items-center justify-center w-full gap-[30px]"}>
                         <TextInput className={"bg-background-hover w-full"}
+                                   inputType={"text"}
                                    setValue={setId} placeholder={"ID"}
                                    error={idError} maxLength={20}/>
                         <TextInput className={"bg-background-hover w-full"}
+                                   inputType={"text"}
                                    setValue={setNickname} placeholder={"Nickname"}
                                    error={nicknameError} maxLength={20}/>
                         <TextInput className={"bg-background-hover w-full"}
+                                   inputType={"password"}
                                    setValue={setPassword} placeholder={"Password"}
                                    error={passwordError} maxLength={30}/>
                     </div>
