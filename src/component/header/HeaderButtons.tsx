@@ -1,5 +1,5 @@
 import {HeaderButton} from "./HeaderButton";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios, {AxiosError} from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
 import {deleteSessionCookie, getSessionCookie} from "../../module/cookie/CookieManager";
@@ -14,26 +14,27 @@ export const HeaderButtons = () => {
             gotoPath={"/auth/login"}
         />)
 
-    if (getSessionCookie()) {
-
-        axios.request({
-            method: HttpMethod.GET,
-            url: "/user"
-        }).then((response) => {
-            setAuthButton(
-                HeaderButton({
-                    iconUri: "/Profile.svg",
-                    text: response.data.nickname,
-                    gotoPath: ""
-                })
-            )
-        }).catch((err: AxiosError) => {
-            if (err.response?.status === 401) {
-                deleteSessionCookie()
-            }
-            console.log(err)
-        })
-    }
+    useEffect(() => {
+        if (getSessionCookie()) {
+            axios.request({
+                method: HttpMethod.GET,
+                url: "/user"
+            }).then((response) => {
+                setAuthButton(
+                    HeaderButton({
+                        iconUri: "/Profile.svg",
+                        text: response.data.nickname,
+                        gotoPath: ""
+                    })
+                )
+            }).catch((err: AxiosError) => {
+                if (err.response?.status === 401) {
+                    deleteSessionCookie()
+                }
+                console.log(err)
+            })
+        }
+    }, []);
 
     return (<div className={"gap-2.5 flex"}>
             {/*<HeaderButton

@@ -45,6 +45,7 @@ export const GroupMemberSelections = (props: GroupMemberSelectionsProps) => {
                         props.info.groups.map((value) => {
                             return (
                                 <GroupSelection
+                                    key={value.group.id}
                                     id={value.group.id}
                                     name={value.group.name}
                                     logo={value.group.logo}
@@ -67,6 +68,7 @@ export const GroupMemberSelections = (props: GroupMemberSelectionsProps) => {
                         })[0].members.map((value) => {
                             return (
                                 <MemberSelection
+                                    key={value.id}
                                     id={value.id}
                                     name={value.name}
                                     nickname={value.nickname}

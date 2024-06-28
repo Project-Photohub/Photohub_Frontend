@@ -8,7 +8,6 @@ export interface MemberSelectionProps {
 
 export const MemberSelection = (props: MemberSelectionProps) => {
     return <div
-        key={`group-${props.id}`}
         className={`${props.selectedMemberId === props.id ? "bg-background-highlight" : "bg-background-hover hover:bg-background-highlight"} flex items-center gap-[10px] w-max h-[60px] rounded-[30px] pe-[20px] pl-[20px] pt-[10px] pb-[10px] animated`}
         onClick={() => {
             props.setSelectedMemberId(props.id)
