@@ -14,6 +14,8 @@ export const PhotoCardComponent = () => {
             <SkeletonPhotoCards/>
         );
 
+    const [toast, setToast] =
+        useState<JSX.Element>()
     const [modal, setModal] =
         useState<JSX.Element | undefined>()
 
@@ -32,7 +34,9 @@ export const PhotoCardComponent = () => {
                 props,
                 (value: JSX.Element | undefined) => {
                     setModal(value)
-                }
+                },
+                toast,
+                setToast
             )
         )
     }
@@ -45,6 +49,7 @@ export const PhotoCardComponent = () => {
         <>
             {component}
             {modal && modal}
+            {toast}
         </>
     )
 }

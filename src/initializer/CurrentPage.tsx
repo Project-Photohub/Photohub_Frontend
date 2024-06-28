@@ -1,4 +1,5 @@
 export enum PageName {
+    PHOTOCARD = "photocard",
     POPULAR = "popular",
     LATEST = "latest",
     GROUP = "group",
@@ -40,6 +41,8 @@ export class CurrentPage {
 export const CurrentPageInitializer = () => {
     // eslint-disable-next-line no-restricted-globals
     const paths = location.href.split('/')
+
+    console.log(paths)
 
     paths.forEach((it) => {
         if (CurrentPage.isPageName(it)) {

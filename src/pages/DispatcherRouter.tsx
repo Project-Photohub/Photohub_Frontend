@@ -5,6 +5,7 @@ import {SearchPage} from "./search/SearchPage";
 import {AddPhotoCardPage} from "./add/AddPhotoCardPage";
 import {SignupPage} from "./auth/SignupPage";
 import {LoginPage} from "./auth/LoginPage";
+import {PhotoCardPage} from "./photocard/PhotoCardPage";
 
 export const DispatcherRouter = () => {
     return (
@@ -18,6 +19,7 @@ export const DispatcherRouter = () => {
                 <Route path={'login'} element={<LoginPage/>}/>
                 <Route path={'signup'} element={<SignupPage/>}/>
             </Route>
+            <Route path={"/photocard/*"} element={<PhotoCardPage/>}/>
             <Route path={'/*'} element={<NotFoundPage/>}/>
         </Routes>
     )
