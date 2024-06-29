@@ -11,6 +11,7 @@ export const InputPhotoCardTitle = (props: PhotoCardNameInputProps) => {
                        className={"bg-background-default placeholder:text-text-subtext3 placeholder:font-p-light outline-0  font-p-light text-text-white text-[36px]"}
                        onInput={(input) => {
                            const text = (input.target as HTMLInputElement).value
+                       maxLength={30}
 
                            if (text === null || text === undefined || text.trim() === "") {
                                props.setTitle(null)
