@@ -8,7 +8,7 @@ export const Initializers = () => {
     return <>
         <CurrentPageInitializer/>
         <AxiosConfigure/>
-        {/*<DefaultPageController/>*/}
+        <DefaultPageController/>
         <TailwindUtilitesLoader/>
     </>
 }
