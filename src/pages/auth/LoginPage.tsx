@@ -4,7 +4,7 @@ import {useState} from "react";
 import {AuthForm} from "../../component/body/auth/AuthForm";
 import axios, {AxiosError} from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
-import {setSessionId} from "../../module/cookie/SessionManager";
+import {setStorageSessionId} from "../../module/cookie/SessionManager";
 
 export const LoginPage = () => {
 
@@ -50,7 +50,7 @@ export const LoginPage = () => {
                                 password: password
                             }
                         }).then((response) => {
-                            setSessionId(response.data!.sessionId!)
+                            setStorageSessionId(response.data!.sessionId!)
                             location.pathname = "/search/popular"
                         }).catch((reason: AxiosError) => {
                             switch (reason.response?.status) {

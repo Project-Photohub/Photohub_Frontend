@@ -2,7 +2,7 @@ import {HeaderButton} from "./HeaderButton";
 import {useEffect, useState} from "react";
 import axios, {AxiosError} from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
-import {deleteSessionId, getSessionId} from "../../module/cookie/SessionManager";
+import {deleteSessionId, getSessionIdInStorage} from "../../module/cookie/SessionManager";
 import {DivIconButton} from "../button/DivIconButton";
 import {LogoutModal} from "../body/modal/LogoutModal";
 import {CurrentPage, PageName} from "../../initializer/CurrentPage";
@@ -24,8 +24,7 @@ export const HeaderButtons = () => {
         />)
 
     useEffect(() => {
-            console.log(getSessionId())
-            if (getSessionId()) {
+            if (getSessionIdInStorage()) {
                 axios.request({
                     method: HttpMethod.GET,
                     url: "/user"
@@ -65,8 +64,9 @@ export const HeaderButtons = () => {
                 }).catch((err: AxiosError) => {
                     if (err.response?.status === 401) {
                         deleteSessionId()
+                    } else {
+                        console.log(err)
                     }
-                    console.log(err)
                 })
             }
         }
