@@ -39,7 +39,7 @@ export interface GroupMemberSelectionState {
 export const GroupMemberSelections = (props: GroupMemberSelectionsProps) => {
     return (
         <div className={"flex flex-col gap-[20px] ml-[100px] mr-[100px]"}>
-            <div className={"overflow-x-scroll w-full"}>
+            <div className={"overflow-x-scroll w-full pb-[10px]"}>
                 <div className={"flex gap-[10px] w-fit overflow-auto"}>
                     {
                         props.info.groups.map((value) => {
@@ -57,7 +57,7 @@ export const GroupMemberSelections = (props: GroupMemberSelectionsProps) => {
                     }
                 </div>
             </div>
-            <div className={"overflow-x-scroll w-full"}>
+            <div className={"overflow-x-scroll w-full pb-[10px]"}>
                 <div className={"flex gap-[10px] w-fit overflow-auto pl-[50px] pe-[50px]"}
                      onClick={() => {
                          props.state.callMemberClickEvent()

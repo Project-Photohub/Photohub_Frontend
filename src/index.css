@@ -17,17 +17,20 @@
 }
 
 ::-webkit-scrollbar {
-    background-color: var(--background-highlight);
+    background-color: var(--background-hover);
 
     width: 10px;
-    height: 0;
+    height: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--background-hover);
+    background-color: var(--background-highlight);
 }
 
 * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--background-highlight) var(--background-hover);
+
     margin: 0;
     padding: 0;
     border: 0;
