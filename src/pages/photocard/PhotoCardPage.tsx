@@ -6,7 +6,7 @@ import {PhotoCardModalProps} from "../../component/body/photocard/PhotoCardModal
 import {PhotoCardImage} from "../../component/body/photocard/PhotoCardImage";
 import {DivIconButton} from "../../component/button/DivIconButton";
 import {AnyRepository} from "../../module/repository/AnyRepository";
-import {CompleteCopyToast} from "../../component/body/toast/CompleteCopyToast";
+import {IconTextToast} from "../../component/body/toast/IconTextToast";
 
 let info: PhotoCardModalProps | undefined = undefined
 
@@ -75,7 +75,11 @@ export const PhotoCardPage = () => {
                             navigator.clipboard.writeText(location.href)
                             if (toast === undefined) {
                                 setToast(
-                                    <CompleteCopyToast toast={toast} setToast={setToast}/>
+                                    <IconTextToast
+                                        iconUrl={"/Check.svg"}
+                                        text={"링크가 복사되었습니다!"}
+                                        toast={toast}
+                                        setToast={setToast}/>
                                 )
                             }
                         }}

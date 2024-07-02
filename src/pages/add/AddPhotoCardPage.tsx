@@ -4,18 +4,20 @@ import {currentGroupId, currentMemberId} from "../../component/body/group/Defaul
 import {DivButton} from "../../component/button/DivButton";
 import axios from "axios";
 import {HttpMethod} from "../../module/request/ServerInfo";
-import {BlurModal} from "../../component/body/modal/BlurModal";
 import {PageBase} from "../PageBase";
 import {InputPhotoCardTitle} from "../../component/body/photocard/add/InputPhotoCardTitle";
 import {PhotoCardGroupMemberSelector} from "../../component/body/photocard/add/PhotoCardGroupMemberSelector";
 import {LoadingCircle} from "../../asset/LoadingCircle";
+import {IconTextToast} from "../../component/body/toast/IconTextToast";
 
 let isRequested = 0
 
 export const AddPhotoCardPage = () => {
 
     const [modal, setModal]
-        = useState<JSX.Element | undefined>();
+        = useState<JSX.Element>();
+    const [toast, setToast]
+        = useState<JSX.Element>()
     const [loading, setLoading]
         = useState<boolean>(false);
 
@@ -59,11 +61,12 @@ export const AddPhotoCardPage = () => {
                         setLoading(true)
 
                         if (imageFile === null || backImageFile === null || title === undefined || title === null) {
-                            setModal(
-                                <BlurModal setModel={setModal}>
-                                    <p>오류</p>
-                                    <p>입력되지 않은 칸이 있습니다.</p>
-                                </BlurModal>
+                            setToast(
+                                <IconTextToast
+                                    iconUrl={"/Warning.svg"}
+                                    text={"입력되지 않은 칸이 있습니다!"}
+                                    toast={toast}
+                                    setToast={setToast}/>
                             )
                             isRequested = 0;
                             setLoading(false)
@@ -96,6 +99,7 @@ export const AddPhotoCardPage = () => {
                 </DivButton>
             </div>
             {modal!}
+            {toast!}
             <LoadingCircle loading={loading}/>
         </PageBase>
     )

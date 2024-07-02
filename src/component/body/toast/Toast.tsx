@@ -22,7 +22,6 @@ export const Toast = (props: ToastProps) => {
         props.setToast(undefined)
     }, 5000)
 
-
     return (
         <div
             id={`toast`}

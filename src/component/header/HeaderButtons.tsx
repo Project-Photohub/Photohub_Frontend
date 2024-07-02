@@ -6,7 +6,7 @@ import {deleteSessionId, getSessionIdInStorage} from "../../module/cookie/Sessio
 import {DivIconButton} from "../button/DivIconButton";
 import {LogoutModal} from "../body/modal/LogoutModal";
 import {CurrentPage, PageName} from "../../initializer/CurrentPage";
-import {Toast} from "../body/toast/Toast";
+import {IconTextToast} from "../body/toast/IconTextToast";
 
 export const HeaderButtons = () => {
 
@@ -32,10 +32,11 @@ export const HeaderButtons = () => {
                     if (CurrentPage.getCurrentPage() == PageName.LOGIN ||
                         CurrentPage.getCurrentPage() == PageName.SIGNUP) {
                         setToast(
-                            <Toast currentToast={toast} setToast={setToast}>
-                                <img src={"/Warning.svg"} width={"30px"} alt={""}/>
-                                <p className={"text-text-white text-[24px] font-p-regular"}>이미 로그인중입니다</p>
-                            </Toast>
+                            <IconTextToast
+                                iconUrl={"/Warning.svg"}
+                                text={"이미 로그인중입니다"}
+                                toast={toast}
+                                setToast={setToast}/>
                         )
                     }
 
