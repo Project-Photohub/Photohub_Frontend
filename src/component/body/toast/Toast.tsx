@@ -7,7 +7,7 @@ export interface ToastProps {
 
 export const Toast = (props: ToastProps) => {
 
-    const animeId = setTimeout(() => {
+    setTimeout(() => {
         try {
             document.getElementById('toast')!.className += " toast-down-animation"
         } catch (e) {
@@ -18,7 +18,7 @@ export const Toast = (props: ToastProps) => {
             console.error(e)
         }
     }, 4000)
-    const removeId = setTimeout(() => {
+    setTimeout(() => {
         props.setToast(undefined)
     }, 5000)
 
@@ -26,7 +26,7 @@ export const Toast = (props: ToastProps) => {
     return (
         <div
             id={`toast`}
-            className={`fixed bottom-[30px] right-[30px] flex flex-row items-center h-[100px] bg-background-highlight border-[1px] border-solid border-photocard-stroke gap-[10px] px-[30px] py-[10px] rounded-[30px] toast-up-animation ${props.className}`}>
+            className={`fixed bottom-[30px] right-[30px] flex flex-row items-center h-[80px] bg-background-highlight border-[1px] border-solid border-photocard-stroke gap-[10px] px-[30px] py-[10px] rounded-[30px] toast-up-animation ${props.className}`}>
             {props.children}
         </div>
     )
