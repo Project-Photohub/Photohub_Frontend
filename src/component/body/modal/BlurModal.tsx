@@ -10,7 +10,7 @@ export const BlurModal = (props: BlurModalProps) => {
     return (
         /* Blur, Has modal div on child. */
         <div
-            className={`fixed top-0 bottom-0 left-0 w-screen h-screen bg-blur-default overflow-hidden`}
+            className={`fixed top-0 bottom-0 left-0 w-screen h-screen bg-blur-default overflow-hidden `}
             onClick={() => {
                 props.setModel(undefined)
                 props.onClose && props.onClose()
@@ -21,7 +21,7 @@ export const BlurModal = (props: BlurModalProps) => {
 
                 {/* The Modal. */}
                 <div
-                    className={`flex flex-col gap-[30px] items-center rounded-[30px] bg-background-highlight pt-[20px] pb-[20px] pl-[50px] pe-[50px] shadow-blur-modal ${props.className}`}
+                    className={`flex flex-col gap-[30px] items-center rounded-[30px] bg-background-highlight pt-[20px] pb-[20px] pl-[50px] pe-[50px] shadow-blur-modal modal-up-animation ${props.className}`}
                     onClick={(event) => {
                         event.stopPropagation()
                     }}>
