@@ -7,6 +7,8 @@ import {DivIconButton} from "../button/DivIconButton";
 import {LogoutModal} from "../body/modal/LogoutModal";
 import {CurrentPage, PageName} from "../../initializer/CurrentPage";
 import {IconTextToast} from "../body/toast/IconTextToast";
+import {isLoggedIn, setIsLoggedIn} from "../../module/status/StatusManager";
+import {NeedLoginModal} from "../body/modal/NeedLoginModal";
 
 export const HeaderButtons = () => {
 
@@ -29,6 +31,7 @@ export const HeaderButtons = () => {
                     method: HttpMethod.GET,
                     url: "/user"
                 }).then((response) => {
+                    setIsLoggedIn(true);
                     if (CurrentPage.getCurrentPage() == PageName.LOGIN ||
                         CurrentPage.getCurrentPage() == PageName.SIGNUP) {
                         setToast(
@@ -54,9 +57,7 @@ export const HeaderButtons = () => {
                                 className: "rounded-[10px] h-[50px] p-[10px] hover:bg-header-hover animated",
                                 onClick: () => {
                                     setModal(
-                                        <LogoutModal setModal={setModal} onCancel={() => {
-                                            setModal(undefined)
-                                        }}/>
+                                        <LogoutModal setModal={setModal}/>
                                     )
                                 }
                             }
@@ -83,11 +84,29 @@ export const HeaderButtons = () => {
                 }}
                 text={"내 포토카드"}
             />*/}
-            <HeaderButton
-                iconUri={"/Plus.svg"}
-                text={"포토카드 추가"}
-                gotoPath={"/add"}
-            />
+            <div
+                onClick={(event) => {
+                    if (!isLoggedIn) {
+                        event.stopPropagation()
+                        setModal(
+                            <NeedLoginModal setModal={setModal}/>
+                        )
+                    } else {
+                        location.pathname = "/add"
+                    }
+                }}>
+                <DivIconButton
+                    iconProps={{
+                        iconUri: "/Plus.svg",
+                        iconWidth: "20px",
+                        iconHeight: "20px"
+                    }}
+                    gap={"10px"}
+                    text={"포토카드 추가"}
+                    textSize={"16px"}
+                    className={"rounded-[10px] h-[50px] p-[10px] hover:bg-header-hover animated"}
+                />
+            </div>
             {authButton}
             {modal && modal}
             {toast && toast}
