@@ -6,7 +6,8 @@ module.exports = {
     theme: {
         extend: {
             boxShadow: {
-                'blur-modal': "0 0 80px 80px rgba(0, 0, 0, 0.25)"
+                'blur-modal': "0 0 80px 80px rgba(0, 0, 0, 0.25)",
+                'photo-card': "0px 10px 5px 0px rgba(0, 0, 0, 0.25)"
             }
         },
         colors: {

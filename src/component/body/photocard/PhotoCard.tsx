@@ -17,7 +17,7 @@ export const PhotoCard = (
     const isLiked = new AnyRepository<boolean>(false)
 
     return (
-        <div key={"photo-card" + props.id} className={`flex `}>
+        <div key={"photo-card" + props.id} className={`flex hover:translate-y-[-8%] hover:scale-110 hover:shadow-[0_15px_15px_0_rgba(0,0,0,0.25)] rounded-[25px] animated`}>
             <div onClick={() => {
                 PhotoCardModal(props, setModel, isLiked, toast, setToast)
             }}>
